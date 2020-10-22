@@ -58,11 +58,11 @@
               <v-toolbar-title>
                     <div align="center" class="font-weight-black">
                         <div>
-                        <h1 class="grey--text text--darken-2">SISTEMA INTEGRAL
-                            <span class="light-green--text text--accent-4">ADMINISTRATIVO</span>
+                        <h1 class="blue-grey--text text--darken-2">SISTEMA INTEGRAL
+                            <span class="light-green--text text--darken-3">ADMINISTRATIVO</span>
                         </h1>
-                        <h1 class="grey--text text--darken-2">CORTEORINOQUIA
-                            <span class="light-green--text text--accent-4">SINAC</span>
+                        <h1 class="blue-grey--text text--darken-2">CORTEORINOQUIA
+                            <span class="light-green--text text--darken-3">SINAC</span>
                         </h1>
                         </div>
                     </div>
