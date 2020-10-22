@@ -1,7 +1,7 @@
 <template>
   <v-app class="application">
     <v-main>
-      <v-card class="overflow-hidden">
+      <v-card class="overflow-hidden" v-if="$store.getters['login/isUserConnected']">
         <v-app-bar
           color="#FFF"
           shrink-on-scroll
@@ -134,7 +134,7 @@
         </v-app-bar>
       </v-card>
 
-      <v-container>
+      <v-container fill-height fluid>
         <router-view />
       </v-container>
 
@@ -142,6 +142,7 @@
         light
         padless
         fixed
+        v-if="$store.getters['login/isUserConnected']"
       >
         <v-col cols="12">
           <v-card
