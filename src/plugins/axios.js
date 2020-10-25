@@ -2,9 +2,13 @@
 
 import Vue from 'vue';
 import axios from "axios";
+//import store from '@/store';
+
+//const token = store.state.login.token ? store.state.login.token : ''
 
 let config = {
-  baseURL: process.env.APIURL || "",
+  baseURL: process.env.VUE_APP_APIURL || "",
+  //Authorization: 'Bearer ' + token,
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };

@@ -1,7 +1,7 @@
 import { httpClient } from '@/plugins/axios'
 
 export default{
-    signIn ({ email, password }) {
-        return httpClient.post('/signin', { email, password })
+    signIn ({ user, password }) {
+        return httpClient.post('/signin', { user, password })
     }
 }

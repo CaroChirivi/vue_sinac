@@ -48,7 +48,7 @@
                     color="error"
                     v-model="snackbar"
                     top
-                >¡Usuario no existe!</v-snackbar>
+                >¡Verifique usuario y contraseña!</v-snackbar>
             </v-card>
         </v-col>
     </v-row>
@@ -56,7 +56,29 @@
 </template>
 
 <script>
-export default {
-    name: 'SignIn'
-}
+
+    import LoginServices from '../services';
+
+    export default {
+        name: 'SignIn',
+        data () {
+            return {
+                user: '',
+                password: '',
+                snackbar: false
+            }
+        },
+        methods: {
+            async signIn () {
+                const userLogin = { user: this.user, password: this.password }
+                const { data: { token } } = await LoginServices.signIn(userLogin)
+                if( !token ){ //validar códigos estados de la respuesta
+                    this.snackbar = true
+                }else{
+                    this.$store.dispatch('login/signIn', token)
+                    this.$router.push('/')
+                }
+            }
+        }
+    }
 </script>
