@@ -1,5 +1,5 @@
 <template>
-  <v-app class="application">
+  <v-app>
     <v-main>
       <v-card class="overflow-hidden" v-if="$store.getters['login/isUserConnected']">
         <v-app-bar
@@ -180,14 +180,20 @@
 </template>
 
 <script>
-export default {
-  name: 'App',
-  data: () => ({
+
+  //import ErrorsComponent from './components/Errors'
+
+  export default {
+    name: 'App',
+    data: () => ({
       icons: [
         'mdi-web',
         'mdi-cast-education',
         'mdi-facebook',
       ],
     }),
-};
+    // components: {
+    //   ErrorsComponent
+    // }
+  };
 </script>

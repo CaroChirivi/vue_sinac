@@ -5,7 +5,11 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 
+import ErrorsComponent from './components/Errors'
+
 Vue.config.productionTip = false
+
+Vue.component('ErrorsComponent', ErrorsComponent)
 
 new Vue({
   router,
