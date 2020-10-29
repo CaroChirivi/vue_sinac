@@ -6,10 +6,10 @@
         <v-col cols="3">
             <v-card class="elevation-15" >
                 <v-form @submit.prevent="signIn()">
-                    <ErrorsComponent
+                    <Errors
                         :error-message="errorMessageText" 
                         :errors="errorsArray"                      
-                    ></ErrorsComponent>
+                    ></Errors>
                     <!-- <ErrorsComponent
                         v-bind:error-message="'Este es mensaje desde padre con v-bind'"                       
                     ></ErrorsComponent> -->
@@ -61,7 +61,6 @@
 </template>
 
 <script>
-    //import ErrorsComponent from '@/modules/components/Errors'
     import LoginServices from '../services';
 
     export default {
@@ -71,19 +70,21 @@
                 user: '',
                 password: '',
                 errorMessageText: '',
-                errorsArray: [],
+                errorsArray: []
             }
         },
+        inject: ['mySpinner'],
         methods: {
             async signIn () {
                 const userLogin = { user: this.user, password: this.password }
                 
                 console.log("getting response");
                 try {
+                    this.mySpinner.val = true
                     await LoginServices.signIn(userLogin)
                     .then(response => {
                         const { data: { token } } = response
-                        if( token ){ //validar códigos estados de la respuesta
+                        if( token ){
                             this.$store.dispatch('login/signIn', token)
                             this.$router.push('/')
                         }
@@ -91,14 +92,11 @@
                     .catch(error => {
                         switch ( error.response.status ) {
                             case 422:
-                                console.log("Esta es error en la validacion del form")
+                                console.log("error.response")
                                 console.log(error.response)
-                                console.log(error.response.data.errors)
                                 this.errorMessageText = error.response.data.message
                                 this.errorsArray = Object.values(error.response.data.errors)
-                                //this.$emit('changeErrorMessage', 'Por favor corrija los siguientes errores:')
-                                //ErrorsComponent.errorMessage = 'Por favor corrija los siguientes errores:'
-                               // ErrorsComponent.errors.push(error.response.data.errors)
+                                this.mySpinner.val = false
                                 break
                         }
                     })
@@ -121,8 +119,5 @@
                 
             }
          },
-        // components: {
-        //     ErrorsComponent
-        // }
     }
 </script>

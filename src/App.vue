@@ -1,8 +1,10 @@
 <template>
   <v-app>
     <v-main>
+      <Spinner :start="spin.val"/>
       <v-card class="overflow-hidden" v-if="$store.getters['login/isUserConnected']">
         <v-app-bar
+          scroll-threshold="500"
           color="#FFF"
           shrink-on-scroll
           prominent
@@ -191,9 +193,14 @@
         'mdi-cast-education',
         'mdi-facebook',
       ],
+      spin: {
+        val: false
+      }
     }),
-    // components: {
-    //   ErrorsComponent
-    // }
+    provide() {
+      return {
+        mySpinner: this.spin
+      }
+    }
   };
 </script>
