@@ -1,28 +1,39 @@
 <template>
-    <v-row align="center" justify="center" v-if="errorMessage.length">
-        <v-col cols="10">
-            <v-alert
-                border="bottom"
-                dense
-                elevation="3"
-                text
-                type="error"
-            > 
-                {{ errorMessage }}
-                <!-- {{ fullText }} -->
-                <ul>
-                    <li v-for="(value, key, index) in validationErrors" :key="index">
-                        {{ value }}
-                    </li>
-                </ul>
-            </v-alert>
-        </v-col>
-    </v-row>
+    <v-snackbar 
+        v-model="snackbar"
+        color="red darken-4"
+        top 
+        right
+        timeout=-1
+    >
+        {{ validationMessage }}
+        <ul>
+            <li v-for="(value, key, index) in validationErrors" :key="index">
+                {{ value }}
+            </li>
+        </ul>
+        <template v-slot:action="{ attrs }">
+            <v-btn
+            color="white"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
+            >
+             <v-icon >mdi-close</v-icon>
+            </v-btn>
+        </template>
+    </v-snackbar>
+    
 </template>
 
 <script>
     export default {
         name: 'Errors',
+        data () {
+            return {
+                snackbar: false
+            }
+        },
         props: {
             errorMessage: {
                 type: String,
@@ -35,12 +46,14 @@
             }
         },
         computed: {
-            fullText() {
-                return this.errorMessage + " Full text"
+            validationMessage(){
+                console.log(this.errorMessage);
+                this.errorMessage.length ? this.snackbar = true : this.snackbar = false
+                return this.errorMessage
             },
             validationErrors() {
                 //let errors = Object.values(this.errors)
-                let errors = this.errors.flat()
+                const errors = this.errors.flat()
                 return errors
             }
         }

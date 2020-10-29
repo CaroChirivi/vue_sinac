@@ -137,6 +137,11 @@
       </v-card>
 
       <v-container fill-height fluid>
+        <Errors
+          :error-message="errorMessages.message" 
+          :errors="errorMessages.array"     
+          ref="errors"                 
+        ></Errors>
         <router-view />
       </v-container>
 
@@ -195,11 +200,16 @@
       ],
       spin: {
         val: false
+      },
+      errorMessages: {
+        message: '',
+        array: []
       }
     }),
     provide() {
       return {
-        mySpinner: this.spin
+        mySpinner: this.spin,
+        errorMessages: this.errorMessages
       }
     }
   };
