@@ -1,8 +1,10 @@
 <template>
-  <v-app class="application">
+  <v-app>
     <v-main>
-      <v-card class="overflow-hidden">
+      <Spinner :start="spin.val"/>
+      <v-card class="overflow-hidden" v-if="$store.getters['login/isUserConnected']">
         <v-app-bar
+          scroll-threshold="500"
           color="#FFF"
           shrink-on-scroll
           prominent
@@ -134,7 +136,7 @@
         </v-app-bar>
       </v-card>
 
-      <v-container>
+      <v-container fill-height fluid>
         <router-view />
       </v-container>
 
@@ -142,6 +144,7 @@
         light
         padless
         fixed
+        v-if="$store.getters['login/isUserConnected']"
       >
         <v-col cols="12">
           <v-card
@@ -179,14 +182,25 @@
 </template>
 
 <script>
-export default {
-  name: 'App',
-  data: () => ({
+
+  //import ErrorsComponent from './components/Errors'
+
+  export default {
+    name: 'App',
+    data: () => ({
       icons: [
         'mdi-web',
         'mdi-cast-education',
         'mdi-facebook',
       ],
+      spin: {
+        val: false
+      }
     }),
-};
+    provide() {
+      return {
+        mySpinner: this.spin
+      }
+    }
+  };
 </script>
