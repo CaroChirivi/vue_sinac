@@ -6,16 +6,6 @@
         <v-col cols="3">
             <v-card class="elevation-15" >
                 <v-form @submit.prevent="signIn()">
-                    <Errors
-                        :error-message="errorMessageText" 
-                        :errors="errorsArray"                      
-                    ></Errors>
-                    <!-- <ErrorsComponent
-                        v-bind:error-message="'Este es mensaje desde padre con v-bind'"                       
-                    ></ErrorsComponent> -->
-                    <!-- <ErrorsComponent
-                        error-message="Este es mensaje desde padre"
-                    ></ErrorsComponent> -->
                     <v-row align="center" justify="center">
                         <v-col cols="6">
                             <template>
@@ -60,6 +50,8 @@
 
 </template>
 
+<script type="application/javascript" defer src="@/assets/js/forms.js"></script>
+
 <script>
     import LoginServices from '../services';
 
@@ -68,12 +60,13 @@
         data () {
             return {
                 user: '',
-                password: '',
-                errorMessageText: '',
-                errorsArray: []
+                password: ''
             }
         },
-        inject: ['mySpinner'],
+        inject: [
+            'mySpinner',
+            'errorMessages'
+        ],
         methods: {
             async signIn () {
                 const userLogin = { user: this.user, password: this.password }
@@ -81,6 +74,9 @@
                 console.log("getting response");
                 try {
                     this.mySpinner.val = true
+                    this.errorMessages.message = ''
+                    this.errorMessages.array = []
+                    
                     await LoginServices.signIn(userLogin)
                     .then(response => {
                         const { data: { token } } = response
@@ -90,19 +86,33 @@
                         }
                     })
                     .catch(error => {
-                        switch ( error.response.status ) {
-                            case 422:
-                                console.log("error.response")
-                                console.log(error.response)
-                                this.errorMessageText = error.response.data.message
-                                this.errorsArray = Object.values(error.response.data.errors)
-                                this.mySpinner.val = false
-                                break
+                        console.log("entro catch interno");
+                        console.log(error);
+                        if(!error.response){
+                            this.errorMessages.message = `Error de red. No hay conexión con el servidor. 
+                                                    Consulte a la administradora`
+                        }else{
+                            switch ( error.response.status ) {
+                                case 422:
+                                    console.log(error.response)
+                                    this.errorMessages.message = error.response.data.message
+                                    this.errorMessages.array = Object.values(error.response.data.errors)
+                                    break
+                                case 404:
+                                    console.log("error 404");
+                                    console.log(error.response)
+                                    this.errorMessages.message = error.response.data.message
+                                    break
+                            }
                         }
                     })
                 }catch (error){
+                    this.errorMessages.message = `Consulte a la administradora: ${error}`
                     console.log("Error de afuera " + error);
                 }
+
+                this.mySpinner.val = false
+
                 // try {
                 //     const response = await LoginServices.signIn(userLogin)
                 //     console.log(response);
