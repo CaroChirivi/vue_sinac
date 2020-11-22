@@ -127,6 +127,12 @@
                         </v-list-item-action>
                         <v-list-item-subtitle>Cambiar contraseña</v-list-item-subtitle>
                       </v-list-item>
+                      <v-list-item @click="() => {}">
+                        <v-list-item-action>
+                          <v-icon color="blue darken-4">mdi-logout</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-subtitle>Cerrar sesión</v-list-item-subtitle>
+                      </v-list-item>
                     </v-list>
                   </v-card>
                 </v-menu>
