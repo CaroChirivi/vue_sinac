@@ -1,5 +1,8 @@
 <template>
-    <v-card class="overflow-hidden" v-if="$store.getters['login/isUserConnected']">
+    <v-card 
+      class="overflow-hidden" 
+      v-if="$store.getters['login/isUserConnected']"
+      >
         <v-app-bar
           scroll-threshold="500"
           color="#FFF"

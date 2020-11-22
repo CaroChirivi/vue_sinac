@@ -14,6 +14,25 @@
                 >
                 <v-hover v-slot="{ hover }">
                     <v-card
+                        class="mx-auto corte-card pt-2"
+                        max-width="160"
+                        :elevation="hover ? 12 : 2"
+                        :class="{ 'on-hover': hover }"
+                    >
+                        <v-img
+                            :src="getIconUrl(item.img)"
+                            height="120px"
+                            width="120px"
+                            class="mx-5"
+                        ></v-img>
+
+                        <v-card-title 
+                            class="text-h6 justify-center"
+                        >
+                            {{ item.title }}
+                        </v-card-title>
+                    </v-card>
+                    <!-- <v-card
                     :elevation="hover ? 12 : 2"
                     :class="{ 'on-hover': hover }"
                     >
@@ -32,7 +51,7 @@
                         </v-row>
                         </v-card-title>
                     </v-img>
-                    </v-card>
+                    </v-card> -->
                 </v-hover>
                 </v-col>
             </template>
@@ -48,15 +67,23 @@ export default {
         items: [
         {
           title: 'Estudiantes',
-          img: 'person_search.png',
-        },
-        {
-          title: 'Pagos',
-          img: 'report.png',
+          img: 'person_search_peque.png',
         },
         {
           title: 'Programas',
-          img: 'person_search.png',
+          img: 'professions.png',
+        },
+        {
+          title: 'Pagos',
+          img: 'pagos.png',
+        },
+        {
+          title: 'Reportes',
+          img: 'report.png',
+        },
+        {
+          title: 'Plataformas',
+          img: 'plataformas.png',
         },
       ],
       transparent: 'rgba(255, 255, 255, 0)',
@@ -69,3 +96,10 @@ export default {
     }
 }
 </script>
+
+<style>
+    .corte-card:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+</style>
