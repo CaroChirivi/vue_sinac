@@ -18,6 +18,7 @@
                         max-width="160"
                         :elevation="hover ? 12 : 2"
                         :class="{ 'on-hover': hover }"
+                        to="/student"
                     >
                         <v-img
                             :src="getIconUrl(item.img)"

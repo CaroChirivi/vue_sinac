@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { LoginRoutes } from '@/modules/login/routes'
+import { StudentRoutes } from '@/modules/student/routes'
 
 import HomePage from '@/pages/Home'
 import store from '../store'
@@ -16,7 +17,8 @@ const routes = [
       requiresAuth: true
     }
   },
-    ...LoginRoutes
+    ...LoginRoutes,
+    ...StudentRoutes
 ]
 
 const router = new VueRouter({
