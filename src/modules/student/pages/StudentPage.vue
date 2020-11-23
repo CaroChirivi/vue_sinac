@@ -1,7 +1,7 @@
 <template>
     <v-row align="center" justify="center">
         <v-col cols="10" class="text-center">
-            <h1 class="corte-module-title">ADMINISTRACION DE ESTUDIANTES</h1>
+            <h1 class="corte-module-title">ADMINISTRACIÓN DE ESTUDIANTES</h1>
             <StudentSearch />
             <router-view>
             </router-view>

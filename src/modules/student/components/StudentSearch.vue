@@ -33,7 +33,7 @@
                                 <v-text-field label="Primer nombre"></v-text-field>
                             </v-col>
                         </v-row>
-                        <div style="display:none;">
+                        <div style="display:block;" class="mt-8">
                             <v-row>
                                 <v-col class="d-flex">
                                     <v-btn 
@@ -50,13 +50,64 @@
                                     text
                                     type="info"
                                     >
-                                    La consulta mostrará los primeros 5 registros. Si el resultado de
+                                    Nota: La consulta mostrará los primeros 5 registros. Si el resultado de
                                     la búsqueda no fué exitoso, por favor elija otros criterios de búsqueda.
                                     </v-alert>
                                 </v-col>
                             </v-row>
+                            <v-row>
+                                <v-col>
+                                    <v-simple-table primary>
+                                        <template v-slot:default>
+                                        <thead>
+                                            <tr>
+                                            <th class="text-left">
+                                                Documento
+                                            </th>
+                                            <th class="text-left">
+                                                Nombre
+                                            </th>
+                                            <th class="text-left">
+                                                Celular
+                                            </th>
+                                            <th class="text-left">
+                                                Acciones
+                                            </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                            v-for="item in students"
+                                            :key="item.id"
+                                            >
+                                            <td>{{ item.cedula }}</td>
+                                            <td>{{ item.nombre }}</td>
+                                            <td>{{ item.celular }}</td>
+                                            <td>
+                                                <v-tooltip bottom>
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-btn
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    dark
+                                                    fab
+                                                    x-small
+                                                    class="green darken-1"
+                                                    >
+                                                    <v-icon>mdi-account-arrow-right</v-icon>
+                                                    </v-btn>
+                                                </template>
+                                                <span>Ver estudiante</span>
+                                                </v-tooltip>
+                                            </td>
+                                            </tr>
+                                        </tbody>
+                                        </template>
+                                    </v-simple-table>
+                                </v-col>
+                            </v-row>
                         </div>
-                        <div>
+                        <div style="display:none;">
                             <v-row>
                                 <v-col class="d-flex">
                                     <v-card
@@ -106,6 +157,20 @@ export default {
           name: 'Curso soporte vital básico',
           id: '2',
         },
+        ],
+        students: [
+        {
+            id: '1',
+            cedula: '80850596',
+            nombre: 'Juan Jose Mendoza Leon',
+            celular: '321 2047527',
+        },
+        {
+            id: '2',
+            cedula: '1023244656',
+            nombre: 'Jose Antonio Mendoza Tarapues',
+            celular: '321 4021654',
+        },
         ]
     })
 }
@@ -113,9 +178,18 @@ export default {
 
 <style lang="css" scoped>
 
-.document {
-    font-size: 1.3em;
-    font-weight: 100;
-    color: #F9FBE7;
-}
+    .document {
+        font-size: 1.3em;
+        font-weight: 100;
+        color: #F9FBE7;
+    }
+
+    th{
+        font-size: 1em!important;
+        color: #0288D1!important;
+    }
+
+    td{
+        text-align: left;
+    }
 </style>
