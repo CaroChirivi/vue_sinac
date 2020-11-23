@@ -26,6 +26,7 @@
                             name="user" 
                             prepend-icon="mdi-account" 
                             type="text"
+                            class="mt-5"
                         ></v-text-field>
                         <v-text-field
                             v-model="password"
@@ -33,12 +34,13 @@
                             name="password"
                             prepend-icon="mdi-lock"
                             type="password"
+                            class="mt-15"
                         ></v-text-field>
                     </v-card-text>        
                     <v-card-actions>
                         <v-btn 
                             type="submit"
-                            class="mx-auto" 
+                            class="mx-auto mt-10" 
                             color="blue darken-3"
                             dark
                         >Ingresar</v-btn>
