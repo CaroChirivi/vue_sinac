@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <v-main>
-      <Spinner :start="spin.val"/>
+        <Spinner :start="spin.val"/>
         <v-app-bar
           scroll-threshold="500"
           color="#FFF"
@@ -48,10 +48,10 @@
                     </template>
                     <v-list>
                       <v-list-item>
-                        <v-list-item-title>item1</v-list-item-title>
+                        <v-list-item-title>Usuarios</v-list-item-title>
                       </v-list-item>
                       <v-list-item>
-                        <v-list-item-title>item2</v-list-item-title>
+                        <v-list-item-title>Estudiantes</v-list-item-title>
                       </v-list-item>
                     </v-list>
                   </v-menu>
