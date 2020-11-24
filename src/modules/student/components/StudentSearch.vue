@@ -4,7 +4,7 @@
             <v-col cols="9" class="text-center">
                 <v-card
                     class="mx-auto px-3"
-                    max-width="800"
+                    max-width="850"
                 >
                     <v-row align="center" justify="center">
                             <v-col>
@@ -14,7 +14,11 @@
                     <v-form >
                         <v-row>
                             <v-col cols="6">
-                                <v-text-field class="document" label="Número de documento"></v-text-field>
+                                <v-text-field 
+                                v-model="cedula"
+                                class="document" 
+                                label="Número de documento">
+                                </v-text-field>
                             </v-col>
                             <v-col cols="6">
                                 <v-select 
@@ -27,17 +31,17 @@
                         </v-row>
                         <v-row>
                             <v-col cols="6">
-                                <v-text-field label="Primer apellido"></v-text-field>
+                                <v-text-field v-model="apellido" label="Primer apellido"></v-text-field>
                             </v-col>
                             <v-col cols="6">
                                 <v-text-field label="Primer nombre"></v-text-field>
                             </v-col>
                         </v-row>
-                        <div style="display:block;" class="mt-8">
+                        <div class="mt-8" v-if="search">
                             <v-row>
                                 <v-col class="d-flex">
                                     <v-btn 
-                                        
+                                        @click="newStudent"
                                         dark
                                         class="mx-auto"
                                         color="blue darken-3">BUSCAR ESTUDIANTE</v-btn>
@@ -55,12 +59,15 @@
                                     </v-alert>
                                 </v-col>
                             </v-row>
-                            <v-row>
+                            <v-row v-if="students.length">
                                 <v-col>
                                     <v-simple-table primary>
                                         <template v-slot:default>
                                         <thead>
                                             <tr>
+                                            <th class="text-left">
+                                                Programa
+                                            </th>
                                             <th class="text-left">
                                                 Documento
                                             </th>
@@ -80,6 +87,7 @@
                                             v-for="item in students"
                                             :key="item.id"
                                             >
+                                            <td>{{ item.programa }}</td>
                                             <td>{{ item.cedula }}</td>
                                             <td>{{ item.nombre }}</td>
                                             <td>{{ item.celular }}</td>
@@ -107,7 +115,7 @@
                                 </v-col>
                             </v-row>
                         </div>
-                        <div style="display:none;">
+                        <div v-else>
                             <v-row>
                                 <v-col class="d-flex">
                                     <v-card
@@ -124,10 +132,12 @@
                                         <v-row class="mt-6">
                                             <v-col class="d-flex">
                                                 <v-btn 
+                                                    to="/student/create"
                                                     dark
                                                     class="mx-auto"
                                                     color="blue darken-3">REGISTRAR</v-btn>
                                                     <v-btn 
+                                                    @click="cancel"
                                                     dark
                                                     class="mx-auto"
                                                     color="blue darken-3">CANCELAR</v-btn>
@@ -148,6 +158,9 @@
 export default {
     name: 'StudentSearch',
     data: () => ({
+        search: true,
+        cedula: '',
+        apellido: '',
         profession: [
         {
           name: 'Tecnico Auxiliar Enfermeria',
@@ -159,20 +172,42 @@ export default {
         },
         ],
         students: [
-        {
-            id: '1',
-            cedula: '80850596',
-            nombre: 'Juan Jose Mendoza Leon',
-            celular: '321 2047527',
-        },
-        {
-            id: '2',
-            cedula: '1023244656',
-            nombre: 'Jose Antonio Mendoza Tarapues',
-            celular: '321 4021654',
-        },
+        
         ]
-    })
+    }),
+    methods: {
+        newStudent () {
+            this.students = []
+            if(this.apellido){
+                console.log(this.cedula);
+                this.students = this.loadStudents()
+                //this.search = this.cedula ? true: false
+            }else{
+                this.search = this.cedula ? false: true
+            }
+        },
+        cancel () {
+            this.search = true
+        },
+        loadStudents () {
+            return [
+                {
+                    id: '1',
+                    programa: 'Tec. Aux. Enfermería',
+                    cedula: '80850596',
+                    nombre: 'Juan Jose Mendoza Leon',
+                    celular: '321 2047527',
+                },
+                {
+                    id: '2',
+                    programa: 'Tec. Aux. Enfermería',
+                    cedula: '1023244656',
+                    nombre: 'Jose Antonio Mendoza Tarapues',
+                    celular: '321 4021654',
+                },
+            ]
+        }
+    }
 }
 </script>
 
@@ -193,3 +228,4 @@ export default {
         text-align: left;
     }
 </style>
+
