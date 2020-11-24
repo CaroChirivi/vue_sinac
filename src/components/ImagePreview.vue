@@ -42,14 +42,12 @@ export default {
 
 <style lang="css" scoped>
 .file-upload-form, .image-preview {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    padding: 20px;
+    padding: 2px;
 }
 img.preview {
     width: 200px;
     height: 200px;
     background-color: white;
     border: 1px solid #DDD;
-    padding: 5px;
 }
 </style>

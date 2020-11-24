@@ -3,9 +3,8 @@
         <v-row align="center" justify="center">
             <v-col cols="9">
                 <v-card
-                    class="mx-auto px-3"
+                    class="mx-auto px-3 pb-8"
                     max-width="1200"
-                    style="overflow-y: scroll;"
                 >
                     <v-row align="center" justify="center">
                             <v-col>
@@ -18,9 +17,8 @@
                             <v-stepper-step
                                 :complete="e1 > 1"
                                 step="1"
-                                color="light-blue darken-1"
                             >
-                                <span class="light-blue--text text--lighten-1">Información General</span>
+                                <span>Información General</span>
                             </v-stepper-step>
 
                             <v-divider></v-divider>
@@ -29,20 +27,26 @@
                                 :complete="e1 > 2"
                                 step="2"
                             >
-                                Name of step 2
+                                <span>Información de contacto</span>
                             </v-stepper-step>
 
                             <v-divider></v-divider>
 
                             <v-stepper-step step="3">
-                                Name of step 3
+                                <span>Información de residencia</span>
+                            </v-stepper-step>
+
+                            <v-divider></v-divider>
+
+                            <v-stepper-step step="4">
+                                <span>Información de salud</span>
                             </v-stepper-step>
                             </v-stepper-header>
 
                             <v-stepper-items>
                             <v-stepper-content step="1">
                                 <v-card
-                                class="mb-12"
+                                class="mb-12 px-2"
                                 color="blue-grey lighten-5"
                                 height="300px"
                                 >
@@ -86,22 +90,26 @@
                                                     </v-text-field>
                                                 </v-col>
                                                 <v-col cols="6">
-                                                    <v-text-field 
-                                                    v-model="estado_civil"
-                                                    label="Estado civil">
-                                                    </v-text-field>
+                                                    <v-select 
+                                                        :items="tipo_docs"
+                                                        item-text="name"
+                                                        item-value="id"
+                                                        label="Estado civil">
+                                                    </v-select>
                                                 </v-col>
                                             </v-row>
                                             <v-row>
                                                 <v-col cols="6">
-                                                    <v-text-field 
-                                                    v-model="Tipo_poblacion"
-                                                    label="Tipo población">
-                                                    </v-text-field>
+                                                    <v-select 
+                                                        :items="tipo_docs"
+                                                        item-text="name"
+                                                        item-value="id"
+                                                        label="Tipo de población">
+                                                    </v-select>
                                                 </v-col>
                                             </v-row>
                                         </v-col>
-                                        <v-col cols="4">
+                                        <v-col cols="4" align="center" justify="center">
                                             <ImagePreview /> 
                                         </v-col>
                                     </v-row>
@@ -116,46 +124,216 @@
                                 Continuar
                                 </v-btn>
 
-                                <v-btn text>
-                                Cancel
+                                <v-btn text to="/student">
+                                    Cancelar
                                 </v-btn>
                             </v-stepper-content>
 
                             <v-stepper-content step="2">
                                 <v-card
-                                class="mb-12"
-                                color="grey lighten-1"
-                                height="200px"
-                                ></v-card>
+                                class="mb-12 px-2"
+                                color="blue-grey lighten-5"
+                                height="300px"
+                                >
+                                    <v-row>
+                                        <v-col cols="4">
+                                            <v-text-field 
+                                            v-model="celular"
+                                            label="Celular">
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-text-field 
+                                            v-model="email"
+                                            label="Correo electrónico">
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-text-field 
+                                            v-model="email_institucional"
+                                            label="Correo electrónico institucional">
+                                            </v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="8">
+                                            <v-text-field 
+                                            v-model="acudiente"
+                                            label="Nombre acudiente">
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-text-field 
+                                            v-model="acudiente_documento"
+                                            label="Documento acudiente">
+                                            </v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="4">
+                                            <v-text-field 
+                                            v-model="acudiente_direccion"
+                                            label="Dirección acudiente">
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-text-field 
+                                            v-model="acudiente_celular"
+                                            label="Celular acudiente">
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-select 
+                                                :items="parentezco"
+                                                item-text="name"
+                                                item-value="id"
+                                                label="Parentezco">
+                                            </v-select>
+                                        </v-col>
+                                    </v-row>
+                                </v-card>
 
                                 <v-btn
-                                color="primary"
+                                color="blue darken-3"
+                                dark
                                 @click="e1 = 3"
                                 >
                                 Continue
                                 </v-btn>
 
-                                <v-btn text>
-                                Cancel
+                                <v-btn text @click="e1 = 1">
+                                    Anterior
+                                </v-btn>
+                                <v-btn text to="/student">
+                                    Cancelar
                                 </v-btn>
                             </v-stepper-content>
 
                             <v-stepper-content step="3">
                                 <v-card
-                                class="mb-12"
-                                color="grey lighten-1"
-                                height="200px"
-                                ></v-card>
+                                class="mb-12 px-2"
+                                color="blue-grey lighten-5"
+                                height="300px"
+                                >
+                                    <v-row>
+                                        <v-col cols="4">
+                                            <v-select 
+                                                :items="parentezco"
+                                                item-text="name"
+                                                item-value="id"
+                                                label="Tipo vivienda">
+                                            </v-select>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-select 
+                                                :items="parentezco"
+                                                item-text="name"
+                                                item-value="id"
+                                                label="Estrato">
+                                            </v-select>
+                                        </v-col>
+                                    </v-row>
+                                </v-card>
 
                                 <v-btn
-                                color="primary"
-                                @click="e1 = 1"
+                                color="blue darken-3"
+                                @click="e1 = 4"
+                                dark
                                 >
                                 Continue
                                 </v-btn>
 
-                                <v-btn text>
-                                Cancel
+                                <v-btn text @click="e1 = 2">
+                                    Anterior
+                                </v-btn>
+                                <v-btn text to="/student">
+                                    Cancelar
+                                </v-btn>
+                            </v-stepper-content>
+
+                            <v-stepper-content step="4">
+                                <v-card
+                                class="mb-12 px-2"
+                                color="blue-grey lighten-5"
+                                height="300px"
+                                >
+                                    <v-row>
+                                        <v-col cols="4">
+                                            <v-select 
+                                                :items="parentezco"
+                                                item-text="name"
+                                                item-value="id"
+                                                label="EPS">
+                                            </v-select>
+                                        </v-col>
+                                        <v-col cols="2">
+                                            <v-switch
+                                            v-model="sisben"
+                                            :label="`Sisben: ${sisben.toString()}`"
+                                            ></v-switch>
+                                        </v-col>
+                                        <v-col cols="3">
+                                            <v-select 
+                                                :items="parentezco"
+                                                item-text="name"
+                                                item-value="id"
+                                                label="Nivel">
+                                            </v-select>
+                                        </v-col>
+                                        <v-col cols="3">
+                                            <v-select 
+                                                :items="parentezco"
+                                                item-text="name"
+                                                item-value="id"
+                                                label="Grupo Sanguíneo">
+                                            </v-select>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="4">
+                                            <v-select 
+                                                :items="parentezco"
+                                                item-text="name"
+                                                item-value="id"
+                                                label="Discapacidad">
+                                            </v-select>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field 
+                                            v-model="celular"
+                                            label="Alergias">
+                                            </v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="3">
+                                            <v-switch
+                                            v-model="sisben"
+                                            :label="`Toma medicamentos: ${sisben.toString()}`"
+                                            ></v-switch>
+                                        </v-col>
+                                        <v-col cols="9">
+                                            <v-text-field 
+                                            v-model="celular"
+                                            label="Cuáles medicamentos">
+                                            </v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                </v-card>
+
+                                <v-btn
+                                color="blue darken-3"
+                                dark
+                                @click="e1 = 5"
+                                >
+                                Continue
+                                </v-btn>
+
+                                <v-btn text @click="e1 = 3">
+                                    Anterior
+                                </v-btn>
+                                <v-btn text to="/student">
+                                    Cancelar
                                 </v-btn>
                             </v-stepper-content>
                             </v-stepper-items>

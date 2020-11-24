@@ -3,10 +3,6 @@
     <v-content>
       <v-main>
       <Spinner :start="spin.val"/>
-      <v-card 
-      class="overflow-hidden" 
-      v-if="$store.getters['login/isUserConnected']"
-      >
         <v-app-bar
           scroll-threshold="500"
           color="#FFF"
@@ -14,6 +10,7 @@
           prominent
           height="200px"
           scroll-target="#scrolling-techniques-7"
+          v-if="$store.getters['login/isUserConnected']"
         >
           <v-row>
             <v-col cols="2">
@@ -145,9 +142,11 @@
             </v-col>
           </v-row>
         </v-app-bar>
-        <v-sheet id="scrolling-techniques-7"
-      class="overflow-y-auto"
-      max-height="800">
+        <v-sheet 
+        id="scrolling-techniques-7"
+        class="overflow-y-auto"
+        max-height="800"
+        color="#F1F0F1">
         <v-container fluid style="height: 1500px;">
           <Errors
             :error-message="errorMessages.message" 
@@ -157,9 +156,6 @@
           <router-view />
         </v-container>
         </v-sheet>
-    </v-card>
-      
-        
         <Footer />      
       </v-main>
     </v-content>
