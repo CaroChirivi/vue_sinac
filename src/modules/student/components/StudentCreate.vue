@@ -79,7 +79,7 @@
                                 <v-card
                                 class="mb-12 px-2"
                                 color="blue-grey lighten-5"
-                                height="300px"
+                                height="350px"
                                 >
                                     <v-row>
                                         <v-col cols="8">
@@ -110,6 +110,20 @@
                                                     <v-text-field 
                                                     v-model="segundo_apellido"
                                                     label="Segundo apellido">
+                                                    </v-text-field>
+                                                </v-col>
+                                            </v-row>
+                                            <v-row>
+                                                <v-col cols="6">
+                                                    <v-text-field 
+                                                    v-model="primer_apellido"
+                                                    label="Primer nombre">
+                                                    </v-text-field>
+                                                </v-col>
+                                                <v-col cols="6">
+                                                    <v-text-field 
+                                                    v-model="segundo_apellido"
+                                                    label="Segundo nombre">
                                                     </v-text-field>
                                                 </v-col>
                                             </v-row>
@@ -717,12 +731,12 @@
                                         </v-col>
                                     </v-row>
                                 </v-card>
-                                 <v-btn
-                                 to="/student/student"
-                                color="blue darken-3"
-                                dark
-                                >
-                                Registrar
+                                <v-btn
+                                    to="/student/student"
+                                    color="blue darken-3"
+                                    dark
+                                    >
+                                    Registrar
                                 </v-btn>
 
                                 <v-btn text @click="e1 = 6">

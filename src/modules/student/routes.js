@@ -1,6 +1,3 @@
-//import StudentPage from './pages/StudentPage'
-//import StudentCreate from './components/StudentCreate'
-
 export const StudentRoutes = [
     {
         path: '/student',
@@ -12,19 +9,24 @@ export const StudentRoutes = [
             {
                 path: '/',
                 component: () => import('./components/StudentSearch'),
+                meta: {
+                    requiresAuth: true
+                },
             },
             {
                 path: 'create',
                 component: () => import('./components/StudentCreate'),
+                meta: {
+                    requiresAuth: true
+                },
+            },
+            {
+                path: 'student',
+                component: () => import('./components/Student'),
+                meta: {
+                    requiresAuth: true
+                },
             }
           ]
     },
-    // {
-    //     path: '/student/create',
-    //     name: 'studentcreate',
-    //     component: () => import('./components/StudentCreate'),
-    //     meta: {
-    //         requiresAuth: true
-    //     }
-    // }
 ]
