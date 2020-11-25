@@ -21,12 +21,14 @@
                                 </v-text-field>
                             </v-col>
                             <v-col cols="6">
-                                <v-select 
-                                    :items="profession"
-                                    item-text="name"
-                                    item-value="id"
-                                    label="Programa">
-                                </v-select>
+                                <v-autocomplete
+                                :items="profession"
+                                item-text="name"
+                                item-value="id"
+                                clearable
+                                small-chips
+                                label="Programa"
+                                ></v-autocomplete>
                             </v-col>
                         </v-row>
                         <v-row>

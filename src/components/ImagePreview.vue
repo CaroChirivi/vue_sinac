@@ -45,8 +45,8 @@ export default {
     padding: 2px;
 }
 img.preview {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     background-color: white;
     border: 1px solid #DDD;
 }

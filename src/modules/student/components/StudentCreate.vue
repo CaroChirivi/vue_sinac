@@ -12,69 +12,17 @@
                             </v-col>
                     </v-row>
                     <v-form class="text-left">
-                        <v-stepper v-model="e1">
-                            <v-stepper-header>
+                        <v-stepper
+                            v-model="stepper"
+                            vertical
+                        >
                             <v-stepper-step
-                                :complete="e1 > 1"
-                                step="1"
+                            :complete="stepper > 1"
+                            step="1"
                             >
-                                <span>Información General</span>
+                            Información general
                             </v-stepper-step>
 
-                            <v-divider></v-divider>
-
-                            <v-stepper-step
-                                :complete="e1 > 2"
-                                step="2"
-                            >
-                                <span>Información de contacto</span>
-                            </v-stepper-step>
-
-                            <v-divider></v-divider>
-
-                            <v-stepper-step 
-                                :complete="e1 > 3"
-                                step="3"
-                            >
-                                <span>Información de residencia</span>
-                            </v-stepper-step>
-
-                            <v-divider></v-divider>
-
-                            <v-stepper-step 
-                                :complete="e1 > 4"
-                                step="4"
-                            >
-                                <span>Información de salud</span>
-                            </v-stepper-step>
-
-                            <v-divider></v-divider>
-
-                            <v-stepper-step 
-                                :complete="e1 > 5"
-                                step="5"
-                            >
-                                <span>Información académica</span>
-                            </v-stepper-step>
-
-                            <v-divider></v-divider>
-
-                            <v-stepper-step
-                                :complete="e1 > 6"
-                                step="6"
-                            >
-                                <span>Información laboral</span>
-                            </v-stepper-step>
-
-                            <v-divider></v-divider>
-
-                            <v-stepper-step step="7">
-                                <span>Documentos adjuntos</span>
-                            </v-stepper-step>
-                            </v-stepper-header>
-
-                            <v-stepper-items class="mt-10">
-                            <!-- información general -->
                             <v-stepper-content step="1">
                                 <v-card
                                 class="mb-12 px-2"
@@ -86,10 +34,11 @@
                                             <v-row>
                                                 <v-col cols="6">
                                                     <v-select 
-                                                        :items="tipo_docs"
-                                                        item-text="name"
-                                                        item-value="id"
-                                                        label="Tipo de documento">
+                                                    :items="tipo_docs"
+                                                    item-text="name"
+                                                    item-value="id"
+                                                    label="Tipo de documento"
+                                                    clearable>
                                                     </v-select>
                                                 </v-col>
                                                 <v-col cols="6">
@@ -158,20 +107,22 @@
                                                 </v-col>
                                                 <v-col cols="6">
                                                     <v-select 
-                                                        :items="tipo_docs"
-                                                        item-text="name"
-                                                        item-value="id"
-                                                        label="Estado civil">
+                                                    :items="tipo_docs"
+                                                    item-text="name"
+                                                    item-value="id"
+                                                    label="Estado civil"
+                                                    clearable>
                                                     </v-select>
                                                 </v-col>
                                             </v-row>
                                             <v-row>
                                                 <v-col cols="6">
                                                     <v-select 
-                                                        :items="tipo_docs"
-                                                        item-text="name"
-                                                        item-value="id"
-                                                        label="Tipo de población">
+                                                    :items="tipo_docs"
+                                                    item-text="name"
+                                                    item-value="id"
+                                                    label="Tipo de población"
+                                                    clearable>
                                                     </v-select>
                                                 </v-col>
                                             </v-row>
@@ -186,7 +137,7 @@
                                 <v-btn
                                 color="blue darken-3"
                                 dark
-                                @click="e1 = 2"
+                                @click="stepper = 2"
                                 >
                                 Continuar
                                 </v-btn>
@@ -195,8 +146,13 @@
                                     Cancelar
                                 </v-btn>
                             </v-stepper-content>
-                            <!-- fin información general -->
-                            <!-- información contacto -->
+
+                            <v-stepper-step
+                            :complete="stepper > 2"
+                            step="2"
+                            >
+                            Información de contacto
+                            </v-stepper-step>
                             <v-stepper-content step="2">
                                 <v-card
                                 class="mb-12 px-2"
@@ -251,12 +207,14 @@
                                             </v-text-field>
                                         </v-col>
                                         <v-col cols="4">
-                                            <v-select 
-                                                :items="parentezco"
-                                                item-text="name"
-                                                item-value="id"
-                                                label="Parentezco">
-                                            </v-select>
+                                            <v-autocomplete
+                                            :items="profession"
+                                            item-text="name"
+                                            item-value="id"
+                                            clearable
+                                            small-chips
+                                            label="Parentezco"
+                                            ></v-autocomplete>
                                         </v-col>
                                     </v-row>
                                 </v-card>
@@ -264,22 +222,27 @@
                                 <v-btn
                                 color="blue darken-3"
                                 dark
-                                @click="e1 = 3"
+                                @click="stepper = 3"
                                 >
                                 Continue
                                 </v-btn>
 
-                                <v-btn text @click="e1 = 1">
+                                <v-btn text @click="stepper = 1">
                                     Anterior
                                 </v-btn>
                                 <v-btn text to="/student">
                                     Cancelar
                                 </v-btn>
                             </v-stepper-content>
-                            <!-- fin información contacto -->
-                            <!-- información residencia -->
+
+                            <v-stepper-step
+                            :complete="stepper > 3"
+                            step="3"
+                            >
+                            Información de residencia
+                            </v-stepper-step>
                             <v-stepper-content step="3">
-                                <v-card
+                            <v-card
                                 class="mb-12 px-2"
                                 color="blue-grey lighten-5"
                                 height="300px"
@@ -320,12 +283,14 @@
                                     </v-row>
                                     <v-row>
                                         <v-col cols="4">
-                                            <v-select 
-                                                :items="parentezco"
-                                                item-text="name"
-                                                item-value="id"
-                                                label="Tipo vía 1">
-                                            </v-select>
+                                            <v-autocomplete
+                                            :items="profession"
+                                            item-text="name"
+                                            item-value="id"
+                                            clearable
+                                            small-chips
+                                            label="Tipo vía 1"
+                                            ></v-autocomplete>
                                         </v-col>
                                         <v-col cols="2">
                                             <v-text-field 
@@ -344,18 +309,21 @@
                                                 :items="parentezco"
                                                 item-text="name"
                                                 item-value="id"
-                                                label="Cardinal vía 1">
+                                                label="Cardinal vía 1"
+                                                clearable>
                                             </v-select>
                                         </v-col>
                                     </v-row>
                                     <v-row>
                                         <v-col cols="4">
-                                            <v-select 
-                                                :items="parentezco"
-                                                item-text="name"
-                                                item-value="id"
-                                                label="Tipo vía 2">
-                                            </v-select>
+                                            <v-autocomplete
+                                            :items="profession"
+                                            item-text="name"
+                                            item-value="id"
+                                            clearable
+                                            small-chips
+                                            label="Tipo vía 2"
+                                            ></v-autocomplete>
                                         </v-col>
                                         <v-col cols="2">
                                             <v-text-field 
@@ -374,7 +342,8 @@
                                                 :items="parentezco"
                                                 item-text="name"
                                                 item-value="id"
-                                                label="Cardinal vía 2">
+                                                label="Cardinal vía 2"
+                                                clearable>
                                             </v-select>
                                         </v-col>
                                     </v-row>
@@ -390,7 +359,8 @@
                                                 :items="parentezco"
                                                 item-text="name"
                                                 item-value="id"
-                                                label="Tipo vivienda">
+                                                label="Tipo vivienda"
+                                                clearable>
                                             </v-select>
                                         </v-col>
                                         <v-col cols="4">
@@ -398,7 +368,8 @@
                                                 :items="parentezco"
                                                 item-text="name"
                                                 item-value="id"
-                                                label="Estrato">
+                                                label="Estrato"
+                                                clearable>
                                             </v-select>
                                         </v-col>
                                     </v-row>
@@ -406,35 +377,42 @@
 
                                 <v-btn
                                 color="blue darken-3"
-                                @click="e1 = 4"
+                                @click="stepper = 4"
                                 dark
                                 >
                                 Continue
                                 </v-btn>
 
-                                <v-btn text @click="e1 = 2">
+                                <v-btn text @click="stepper = 2">
                                     Anterior
                                 </v-btn>
                                 <v-btn text to="/student">
                                     Cancelar
                                 </v-btn>
                             </v-stepper-content>
-                            <!-- fin información residencia -->
-                            <!-- información salud -->
+
+                            <v-stepper-step
+                            :complete="stepper > 4"
+                            step="4"
+                            >
+                            Información de salud
+                            </v-stepper-step>
                             <v-stepper-content step="4">
-                                <v-card
+                            <v-card
                                 class="mb-12 px-2"
                                 color="blue-grey lighten-5"
-                                height="300px"
+                                height="250px"
                                 >
                                     <v-row>
                                         <v-col cols="4">
-                                            <v-select 
-                                                :items="parentezco"
-                                                item-text="name"
-                                                item-value="id"
-                                                label="EPS">
-                                            </v-select>
+                                            <v-autocomplete
+                                            :items="profession"
+                                            item-text="name"
+                                            item-value="id"
+                                            clearable
+                                            small-chips
+                                            label="EPS"
+                                            ></v-autocomplete>
                                         </v-col>
                                         <v-col cols="2">
                                             <v-switch
@@ -447,7 +425,8 @@
                                                 :items="parentezco"
                                                 item-text="name"
                                                 item-value="id"
-                                                label="Nivel">
+                                                label="Nivel"
+                                                clearable>
                                             </v-select>
                                         </v-col>
                                         <v-col cols="3">
@@ -455,18 +434,21 @@
                                                 :items="parentezco"
                                                 item-text="name"
                                                 item-value="id"
-                                                label="Grupo Sanguíneo">
+                                                label="Grupo Sanguíneo"
+                                                clearable>
                                             </v-select>
                                         </v-col>
                                     </v-row>
                                     <v-row>
                                         <v-col cols="4">
-                                            <v-select 
-                                                :items="parentezco"
-                                                item-text="name"
-                                                item-value="id"
-                                                label="Discapacidad">
-                                            </v-select>
+                                            <v-autocomplete
+                                            :items="profession"
+                                            item-text="name"
+                                            item-value="id"
+                                            clearable
+                                            small-chips
+                                            label="Discapacidad"
+                                            ></v-autocomplete>
                                         </v-col>
                                         <v-col cols="8">
                                             <v-text-field 
@@ -494,20 +476,25 @@
                                 <v-btn
                                 color="blue darken-3"
                                 dark
-                                @click="e1 = 5"
+                                @click="stepper = 5"
                                 >
                                 Continue
                                 </v-btn>
 
-                                <v-btn text @click="e1 = 3">
+                                <v-btn text @click="stepper = 3">
                                     Anterior
                                 </v-btn>
                                 <v-btn text to="/student">
                                     Cancelar
                                 </v-btn>
                             </v-stepper-content>
-                            <!-- fin información salud -->
-                            <!-- información académica -->
+
+                            <v-stepper-step
+                                :complete="stepper > 5"
+                                step="5"
+                            >
+                            Información  académica
+                            </v-stepper-step>
                             <v-stepper-content step="5">
                                 <v-card
                                 class="mb-12 px-2"
@@ -517,10 +504,10 @@
                                     <v-row>
                                         <v-col cols="4">
                                             <v-select 
-                                                :items="parentezco"
-                                                item-text="name"
-                                                item-value="id"
-                                                label="Nivel de estudio">
+                                            :items="parentezco"
+                                            item-text="name"
+                                            item-value="id"
+                                            label="Nivel de estudio">
                                             </v-select>
                                         </v-col>
                                         <v-col cols="8">
@@ -589,20 +576,25 @@
                                 <v-btn
                                 color="blue darken-3"
                                 dark
-                                @click="e1 = 6"
+                                @click="stepper = 6"
                                 >
                                 Continue
                                 </v-btn>
 
-                                <v-btn text @click="e1 = 4">
+                                <v-btn text @click="stepper = 4">
                                     Anterior
                                 </v-btn>
                                 <v-btn text to="/student">
                                     Cancelar
                                 </v-btn>
                             </v-stepper-content>
-                            <!-- fin información académica -->
-                            <!-- información laboral -->
+
+                            <v-stepper-step
+                                :complete="stepper > 6"
+                                step="6"
+                            >
+                            Información  laboral
+                            </v-stepper-step>
                             <v-stepper-content step="6">
                                 <v-card
                                 class="mb-12 px-2"
@@ -648,20 +640,22 @@
                                 <v-btn
                                 color="blue darken-3"
                                 dark
-                                @click="e1 = 7"
+                                @click="stepper = 7"
                                 >
                                 Continue
                                 </v-btn>
 
-                                <v-btn text @click="e1 = 5">
+                                <v-btn text @click="stepper = 5">
                                     Anterior
                                 </v-btn>
                                 <v-btn text to="/student">
                                     Cancelar
                                 </v-btn>
                             </v-stepper-content>
-                            <!-- fin información laboral -->
-                            <!-- documentos adjuntos -->
+
+                            <v-stepper-step step="7">
+                            Documentos adjuntos
+                            </v-stepper-step>
                             <v-stepper-content step="7">
                                 <v-card
                                 class="mb-12 px-2"
@@ -731,25 +725,34 @@
                                         </v-col>
                                     </v-row>
                                 </v-card>
-                                <v-btn
-                                    to="/student/student"
-                                    color="blue darken-3"
-                                    dark
-                                    >
-                                    Registrar
-                                </v-btn>
 
-                                <v-btn text @click="e1 = 6">
+                                <v-btn text @click="stepper = 6">
                                     Anterior
                                 </v-btn>
-                                <v-btn text to="/student">
-                                    Cancelar
-                                </v-btn>
+                                <v-row align="center" justify="center">
+                                    <v-col class="d-flex" cols="5">
+                                        <v-btn
+                                        to="/student/student"
+                                        color="blue darken-3"
+                                        dark
+                                        class="mx-auto"
+                                        large
+                                        >
+                                        Registrar
+                                        </v-btn>
+                                        <v-btn 
+                                        text 
+                                        to="/student"
+                                        class="mx-auto"
+                                        large
+                                        >
+                                            Cancelar
+                                        </v-btn>
+                                    </v-col>
+                                </v-row>
                             </v-stepper-content>
-                            <!-- fin documentos adjuntos -->
-                            </v-stepper-items>
                         </v-stepper>
-                        
+                        </v-stepper>
                     </v-form>
                 </v-card>
             </v-col>
@@ -769,7 +772,7 @@ export default {
         search: true,
         tipo_doc: '',
         sisben: false,
-        e1: 1,
+        stepper: 1,
         date: new Date().toISOString().substr(0, 10),
         fecha_nacimiento: null,
         menu: false,
