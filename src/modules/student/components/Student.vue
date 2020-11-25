@@ -1,7 +1,7 @@
 <template>
     <v-card
         class="mx-auto"
-        max-width="900"
+        max-width="1000"
     >
         <v-toolbar
         flat
@@ -19,13 +19,13 @@
         </v-tab>
         <v-tab>
             <v-icon left>
-            mdi-lock
+            mdi-timeline
             </v-icon>
             Historial
         </v-tab>
         <v-tab>
             <v-icon left>
-            mdi-access-point
+            mdi-school
             </v-icon>
             Programas
         </v-tab>
@@ -120,160 +120,216 @@
         <v-tab-item>
             <v-card>
                 <v-data-table
-                    :headers="headers"
-                    :items="desserts"
-                    sort-by="calories"
-                    class="elevation-1"
+                  :headers="headers"
+                  :items="histories"
+                  sort-by="calories"
+                  class="elevation-1"
                 >
-                    <template v-slot:top>
+                  <template v-slot:top>
                     <v-toolbar
-                        flat
+                      flat
                     >
-                        <v-toolbar-title>My CRUD</v-toolbar-title>
-                        <v-divider
+                      <v-toolbar-title>HISTORIAL</v-toolbar-title>
+                      <v-divider
                         class="mx-4"
                         inset
                         vertical
-                        ></v-divider>
-                        <v-spacer></v-spacer>
-                        <v-dialog
+                      ></v-divider>
+                      <v-spacer></v-spacer>
+                      <v-dialog
                         v-model="dialog"
-                        max-width="500px"
-                        >
+                        max-width="700px"
+                      >
                         <template v-slot:activator="{ on, attrs }">
-                            <v-btn
-                            color="primary"
+                          <v-btn
+                            color="light-green darken-2"
                             dark
                             class="mb-2"
                             v-bind="attrs"
                             v-on="on"
-                            >
-                            New Item
-                            </v-btn>
+                          >
+                            Nueva observación
+                          </v-btn>
                         </template>
                         <v-card>
-                            <v-card-title>
+                          <v-card-title>
                             <span class="headline">{{ formTitle }}</span>
-                            </v-card-title>
+                          </v-card-title>
 
-                            <v-card-text>
+                          <v-card-text>
                             <v-container>
-                                <v-row>
+                              <v-row>
                                 <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="4"
+                                  cols="3"
                                 >
-                                    <v-text-field
-                                    v-model="editedItem.name"
-                                    label="Dessert name"
-                                    ></v-text-field>
+                                  <v-text-field
+                                    v-model="editedItem.fecha"
+                                    label="Fecha"
+                                  ></v-text-field>
                                 </v-col>
                                 <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="4"
+                                  cols="9"
                                 >
-                                    <v-text-field
-                                    v-model="editedItem.calories"
-                                    label="Calories"
-                                    ></v-text-field>
+                                  <v-text-field
+                                    v-model="editedItem.evento"
+                                    label="Evento"
+                                  ></v-text-field>
                                 </v-col>
+                              </v-row>
+                              <v-row>
                                 <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="4"
+                                  cols="12"
                                 >
-                                    <v-text-field
-                                    v-model="editedItem.fat"
-                                    label="Fat (g)"
-                                    ></v-text-field>
+                                  <v-text-field
+                                    v-model="editedItem.observacion"
+                                    label="Observación"
+                                  ></v-text-field>
                                 </v-col>
-                                <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="4"
-                                >
-                                    <v-text-field
-                                    v-model="editedItem.carbs"
-                                    label="Carbs (g)"
-                                    ></v-text-field>
-                                </v-col>
-                                <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="4"
-                                >
-                                    <v-text-field
-                                    v-model="editedItem.protein"
-                                    label="Protein (g)"
-                                    ></v-text-field>
-                                </v-col>
-                                </v-row>
+                              </v-row>
                             </v-container>
-                            </v-card-text>
+                          </v-card-text>
 
-                            <v-card-actions>
+                          <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn
-                                color="blue darken-1"
-                                text
-                                @click="close"
+                              color="blue darken-3"
+                              text
+                              @click="close"
                             >
-                                Cancel
+                              Cancelar
                             </v-btn>
                             <v-btn
-                                color="blue darken-1"
-                                text
-                                @click="save"
+                              color="blue darken-3"
+                              text
+                              @click="save"
                             >
-                                Save
+                              Crear
                             </v-btn>
-                            </v-card-actions>
+                          </v-card-actions>
                         </v-card>
-                        </v-dialog>
-                        <v-dialog v-model="dialogDelete" max-width="500px">
+                      </v-dialog>
+                      <v-dialog v-model="dialogDelete" max-width="550px">
                         <v-card>
-                            <v-card-title class="headline">Are you sure you want to delete this item?</v-card-title>
-                            <v-card-actions>
+                          <v-card-title class="headline">¿Está seguro de eliminar esta observación?</v-card-title>
+                          <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
-                            <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
+                            <v-btn color="blue darken-3" text @click="closeDelete">Cancelar</v-btn>
+                            <v-btn color="blue darken-3" text @click="deleteItemConfirm">Eliminar</v-btn>
                             <v-spacer></v-spacer>
-                            </v-card-actions>
+                          </v-card-actions>
                         </v-card>
-                        </v-dialog>
+                      </v-dialog>
                     </v-toolbar>
-                    </template>
-                    <template v-slot:item.actions="{ item }">
+                  </template>
+                  <template v-slot:item.actions="{ item }">
                     <v-icon
-                        small
-                        class="mr-2"
-                        @click="editItem(item)"
+                      small
+                      class="mr-2"
+                      @click="editItem(item)"
                     >
-                        mdi-pencil
+                      mdi-pencil
                     </v-icon>
                     <v-icon
-                        small
-                        @click="deleteItem(item)"
+                      small
+                      @click="deleteItem(item)"
                     >
-                        mdi-delete
+                      mdi-delete
                     </v-icon>
-                    </template>
-                    <template v-slot:no-data>
+                  </template>
+                  <template v-slot:no-data>
                     <v-btn
-                        color="primary"
-                        @click="initialize"
+                      color="primary"
+                      @click="initialize"
                     >
-                        Reset
+                      Reset
                     </v-btn>
-                    </template>
+                  </template>
                 </v-data-table>
             </v-card>
         </v-tab-item>
-        <v-tab-item>
-            <v-card max-width="100" max-height="100">Técnico Auxiliar enfermería</v-card>
-                <v-card max-width="100" max-height="100" class="ml-10">Curso SVB-RCP</v-card>
+        <v-tab-item >
+            <v-row>
+              <v-col cols="4">
+                <v-card
+                  class="mx-auto"
+                  max-width="250"
+                  color="light-green lighten-5"
+                >
+                  <v-img
+                    class="white--text align-end"
+                    height="150px"
+                    src="@/assets/images/enfermeria.png"
+                  >
+                  </v-img>
+                  <v-card-title>Auxiliar en Enfermería</v-card-title>
+                  <v-card-subtitle class="pb-0">
+                    Técnico
+                  </v-card-subtitle>
+
+                  <v-card-text class="text--primary">
+                    <div>II semestre</div>
+
+                    <v-chip
+                      class="ma-2"
+                      color="green"
+                      text-color="white"
+                    >
+                      Terminado
+                    </v-chip>
+                  </v-card-text>
+
+                  <v-card-actions>
+
+                    <v-btn
+                      color="light-blue darken-3"
+                      text
+                    >
+                      Explorar
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-col>
+              <v-col cols="4">
+                <v-card
+                  class="mx-auto"
+                  max-width="250"
+                  color="light-green lighten-5"
+                >
+                  <v-img
+                    class="white--text align-end"
+                    height="150px"
+                    src="@/assets/images/svb.png"
+                  >
+                  </v-img>
+                  <v-card-title>Soporte Vital Básico</v-card-title>
+                  <v-card-subtitle class="pb-0">
+                    Curso
+                  </v-card-subtitle>
+
+                  <v-card-text class="text--primary">
+                    <div></div>
+
+                    <v-chip
+                      class="ma-2"
+                      color="green"
+                      text-color="white"
+                    >
+                      Terminado
+                    </v-chip>
+                  </v-card-text>
+
+                  <v-card-actions>
+
+                    <v-btn
+                      color="light-blue darken-3"
+                      text
+                    >
+                      Explorar
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-col>
+            </v-row>
         </v-tab-item>
         </v-tabs>
     </v-card>
@@ -294,19 +350,19 @@ export default {
         },
         { text: 'Evento', value: 'evento' },
         { text: 'Observación', value: 'observacion' },
-        { text: 'Acciones', value: 'acciones', sortable: false },
+        { text: 'Actions', value: 'actions', sortable: false },
       ],
       histories: [],
       editedIndex: -1,
       editedItem: {
         fecha: '',
-        evento: '',
-        history: '',
+        evento: 0,
+        observacion: 0,
       },
       defaultItem: {
         fecha: '',
-        evento: '',
-        history: '',
+        evento: 0,
+        observacion: 0,
       },
     }),
 
@@ -333,29 +389,14 @@ export default {
       initialize () {
         this.histories = [
           {
-            fecha: '28/01/20',
+            fecha: '26/01/2020',
             evento: 'Cambio estado estudiante',
-            history: 'Estudiante registrado en el sistema.'
+            observacion: 'Se registra el estudiante en el sistema',
           },
           {
-            fecha: '28/01/20',
+            fecha: '28/01/2020',
             evento: 'Cambio estado académico',
-            history: 'Estudiante registrado en el programa auxiliar en enfermería. Grupo 2020 A I semestre.'
-          },
-          {
-            fecha: '28/01/20',
-            evento: 'Cambio estado académico',
-            history: 'Estudiante matriculado en el programa auxiliar en enfermería. Grupo 2020 A I semestre.'
-          },
-          {
-            fecha: '20/03/20',
-            evento: 'Cambio estado académico',
-            history: 'Estudiante cursando el programa auxiliar en enfermería. Grupo 2020 A I semestre.'
-          },
-          {
-            fecha: '02/04/20',
-            evento: 'Cambio estado académico',
-            history: 'Estudiante aplaza semestre del programa auxiliar en enfermería. Grupo 2020 A I semestre.'
+            observacion: 'Se registra el estudiante en el programa Técnico en Auxiliar de Enfermería',
           }
         ]
       },
