@@ -145,6 +145,15 @@
                                 <v-btn text to="/student">
                                     Cancelar
                                 </v-btn>
+                                <v-btn
+                                        to="/student/student"
+                                        color="blue darken-3"
+                                        dark
+                                        class="mx-auto"
+                                        large
+                                        >
+                                        Registrar
+                                        </v-btn>
                             </v-stepper-content>
 
                             <v-stepper-step
@@ -157,7 +166,7 @@
                                 <v-card
                                 class="mb-12 px-2"
                                 color="blue-grey lighten-5"
-                                height="300px"
+                                height="200px"
                                 >
                                     <v-row>
                                         <v-col cols="4">

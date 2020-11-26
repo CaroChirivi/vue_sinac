@@ -26,6 +26,29 @@ export const StudentRoutes = [
                 meta: {
                     requiresAuth: true
                 },
+                children: [
+                    {
+                        path: '',
+                        component: () => import('./components/Info'),
+                        meta: {
+                            requiresAuth: true
+                        }
+                    },
+                    {
+                        path: '/histories',
+                        component: () => import('./components/Histories'),
+                        meta: {
+                            requiresAuth: true
+                        }
+                    },
+                    {
+                        path: '/programs',
+                        component: () => import('./components/programs/Programs'),
+                        meta: {
+                            requiresAuth: true
+                        }
+                    }
+                ]
             }
           ]
     },
