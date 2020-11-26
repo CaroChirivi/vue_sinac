@@ -46,7 +46,21 @@ export const StudentRoutes = [
                         component: () => import('./components/programs/Programs'),
                         meta: {
                             requiresAuth: true
-                        }
+                        },
+                    },
+                    {
+                        path: '/programs/historial',
+                        component: () => import('./components/programs/Historial'),
+                        meta: {
+                            requiresAuth: true
+                        },
+                    },
+                    {
+                        path: '/programs/payments',
+                        component: () => import('./components/programs/Payments'),
+                        meta: {
+                            requiresAuth: true
+                        },
                     }
                 ]
             }

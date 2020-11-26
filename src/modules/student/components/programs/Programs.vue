@@ -34,6 +34,7 @@
             <v-btn
                 color="light-blue darken-3"
                 text
+                to="/programs/historial"
             >
                 Explorar
             </v-btn>
