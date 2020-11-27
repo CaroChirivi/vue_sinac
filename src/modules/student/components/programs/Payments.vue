@@ -173,7 +173,16 @@
                             <tbody>
                                 <tr>
                                 <td>25/01/2021</td>
-                                <td>R104</td>
+                                <td>
+                                    <v-btn
+                                    text
+                                    dark
+                                    @click="showVoucher"
+                                    class="light-green--text text--darken-2"
+                                    >
+                                        R104
+                                    </v-btn>
+                                </td>
                                 <td>Paga el total del pago inicial</td>
                                 <td>Efectivo</td>
                                 <td>$320.000</td>
@@ -355,6 +364,10 @@ export default {
       save (date) {
         this.$refs.menu.save(date)
       },
+        showVoucher: function(){
+            var pdf = require('@/assets/docs/voucher.pdf')
+            window.open(pdf, '_blank');
+        }
     },
 }
 </script>
