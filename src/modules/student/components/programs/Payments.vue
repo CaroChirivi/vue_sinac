@@ -5,17 +5,27 @@
         light-green darken-3 
         font-weight-black"
         >Pagos Programa auxiliar enfermería. Grupo 2020 A II semestre</v-card-title>
-        <v-btn
-        dark
-        class="my-6 light-green darken-2"
-        v-if="addPay"
-        @click="addPay = !addPay"
-        >
-            Agregar Pago
-        </v-btn>
+        <div v-if="addPay">
+            <v-btn
+            dark
+            class="my-6 light-green darken-2"
+            @click="addPay = !addPay"
+            >
+                Agregar Pago
+            </v-btn>
+            <v-btn
+            dark
+            class="light-green--text text--darken-2 ml-6"
+            text
+            @click="$router.go(-1)"
+            >
+                Volver
+            </v-btn>
+        </div>
+        <v-expand-x-transition>
         <v-card
         v-if="!addPay"
-        width="400"
+        width="450"
         class="mx-auto my-10"
         >
         <v-card-title 
@@ -106,6 +116,7 @@
         </v-card-actions>
         
         </v-card>
+        </v-expand-x-transition>
         <v-expansion-panels 
         inset 
         :value="expanded"

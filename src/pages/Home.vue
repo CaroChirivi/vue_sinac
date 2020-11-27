@@ -18,7 +18,7 @@
                         max-width="160"
                         :elevation="hover ? 12 : 2"
                         :class="{ 'on-hover': hover }"
-                        to="/student"
+                        :to="getUrl(item.url)"
                     >
                         <v-img
                             :src="getIconUrl(item.img)"
@@ -69,6 +69,7 @@ export default {
         {
           title: 'Estudiantes',
           img: 'person_search_peque.png',
+          url: '/student/student'
         },
         {
           title: 'Programas',
@@ -91,8 +92,10 @@ export default {
     }),
     methods: {
         getIconUrl(img){
-            console.log(img);
             return require(`../assets/images/${img}`)
+        },
+        getUrl(url){
+            return '/student/student'
         }
     }
 }

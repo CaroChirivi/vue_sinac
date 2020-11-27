@@ -45,10 +45,9 @@
                         v-on="on"
                         dark
                         x-small
-                        class="brown lighten-1"
-                        >
-                        {{ item.estado }}
-                        </v-btn>
+                        class="brown ligthen-1"
+                        to="historial/states"
+                        >{{ item.estado }}</v-btn>
                     </template>
                     <span>Ver historial estados en este grupo</span>
                     </v-tooltip>
@@ -93,6 +92,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Historial',
     data () {

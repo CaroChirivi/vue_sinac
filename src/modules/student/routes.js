@@ -56,6 +56,13 @@ export const StudentRoutes = [
                         },
                     },
                     {
+                        path: '/programs/historial/states',
+                        component: () => import('./components/programs/HistorialStates'),
+                        meta: {
+                            requiresAuth: true
+                        },
+                    },
+                    {
                         path: '/programs/payments',
                         component: () => import('./components/programs/Payments'),
                         meta: {
