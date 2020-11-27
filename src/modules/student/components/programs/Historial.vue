@@ -74,6 +74,7 @@
                         <v-btn
                         v-bind="attrs"
                         v-on="on"
+                        @click="showVoucher"
                         dark
                         x-small
                         class="brown ligthen-1"
@@ -138,6 +139,12 @@ export default {
           
         ]
       }
+    },
+    methods: {
+        showVoucher: function(){
+            var pdf = require('@/assets/docs/actamatricula.pdf')
+            window.open(pdf, '_blank');
+        }
     }
 }
 </script>

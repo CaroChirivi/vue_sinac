@@ -1,5 +1,8 @@
 <template>
-    <v-card>
+    <v-card
+    width="80%"
+    class="mx-auto mt-5"
+    >
         <v-data-table
             :headers="headers"
             :items="histories"
