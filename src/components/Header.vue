@@ -9,6 +9,7 @@
           shrink-on-scroll
           prominent
           height="200px"
+          scroll-target="#scrolling-techniques-7"
         >
           <v-row>
             <v-col cols="2">
