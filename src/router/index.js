@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { LoginRoutes } from '@/modules/login/routes'
 import { StudentRoutes } from '@/modules/student/routes'
+import { ProgramRoutes } from '@/modules/programs/routes'
 
 import HomePage from '@/pages/Home'
 import store from '../store'
@@ -18,7 +19,8 @@ const routes = [
     }
   },
     ...LoginRoutes,
-    ...StudentRoutes
+    ...StudentRoutes,
+    ...ProgramRoutes
 ]
 
 const router = new VueRouter({

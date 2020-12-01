@@ -34,7 +34,7 @@
             <v-btn
                 color="light-blue darken-3"
                 text
-                to="/programs/historial"
+                to="/student/student/programs/historial"
             >
                 Explorar
             </v-btn>
