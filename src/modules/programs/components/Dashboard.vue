@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div v-if="addPay">
+        <div v-if="addProgram">
             <v-btn
             dark
             class="my-6 light-green darken-2"
-            @click="addPay = !addPay"
+            @click="addProgram = !addProgram"
             >
-                Agregar Pago
+                Crear Programa
             </v-btn>
             <v-btn
             dark
@@ -19,8 +19,8 @@
         </div>
         <v-expand-x-transition>
         <v-card
-        v-if="!addPay"
-        width="450"
+        v-if="!addProgram"
+        width="750"
         class="mx-auto my-10"
         >
         <v-card-title 
@@ -29,64 +29,68 @@
                 text--lighten-5
                 light-blue darken-3
                 justify-center"
-        >Registrar pago</v-card-title>
+        >Registro de programa</v-card-title>
         <v-card-text>
             <v-form ref="main" @submit.prevent="createNewBook()">
                 <v-row>
-                    <v-col cols="12">
+                    <v-col cols="4">
                         <v-autocomplete
                             v-model="values"
                             :items="items"
                             dense
-                            label="Elija un pago"
+                            label="Area"
+                        ></v-autocomplete>
+                    </v-col>
+                    <v-col cols="4">
+                        <v-autocomplete
+                            v-model="values"
+                            :items="items"
+                            dense
+                            label="Tipo"
+                        ></v-autocomplete>
+                    </v-col>
+                    <v-col cols="4">
+                        <v-autocomplete
+                            v-model="values"
+                            :items="items"
+                            dense
+                            label="Modalidad"
                         ></v-autocomplete>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col cols="6">
-                        <v-menu
-                            ref="menu"
-                            v-model="menu"
-                            :close-on-content-click="false"
-                            transition="scale-transition"
-                            offset-y
-                            min-width="290px"
-                        >
-                            <template v-slot:activator="{ on, attrs }">
-                            <v-text-field
-                                v-model="fecha_nacimiento"
-                                label="Fecha"
-                                prepend-icon="mdi-calendar"
-                                readonly
-                                v-bind="attrs"
-                                v-on="on"
-                            ></v-text-field>
-                            </template>
-                            <v-date-picker
-                            ref="picker"
-                            v-model="fecha_nacimiento"
-                            :max="new Date().toISOString().substr(0, 10)"
-                            min="1950-01-01"
-                            @change="save"
-                            ></v-date-picker>
-                        </v-menu>
+                        <v-text-field label="Nombre corto"></v-text-field>
                     </v-col>
-                    <v-col cols="6">
-                        <v-text-field label="Valor"></v-text-field>
+                </v-row>
+                <v-row>
+                    <v-col cols="12">
+                        <v-text-field label="Nombre largo"></v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12">
+                        <v-textarea
+                        class="mt-2 mb-16"
+                        name="input-7-1"
+                        outlined
+                        clearable
+                        no-resize
+                        rows="4"
+                        label="Descripción"
+                        value=""
+                        ></v-textarea>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col cols="6">
                         <v-select
                         :items="items"
-                        label="Forma de pago"
+                        label="Tipo de duración"
                         ></v-select>
                     </v-col>
                     <v-col cols="6">
-                        <v-file-input
-                            accept="image/*"
-                            label="Evidencia pago"
-                        ></v-file-input>
+                        <v-text-field label="Tiempo de duración"></v-text-field>
                     </v-col>
                 </v-row>
             </v-form>
@@ -250,6 +254,9 @@
 
 <script>
 export default {
-    name: 'Dashboard'
+    name: 'Dashboard',
+    data: () => ({
+        addProgram: true,
+    }),
 }
 </script>

@@ -189,17 +189,155 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
-                                    <td class="deep-orange--text 
+                                    <td class="green--text 
                                     text--darken-1">Total pagos</td>
-                                    <td class="deep-orange--text 
+                                    <td class="green--text 
                                     text--darken-1">$320.000</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
-                                    <td class="deep-orange--text 
+                                    <td class="green--text 
                                     text--darken-1
                                     font-weight-black">Saldo</td>
-                                    <td class="deep-orange--text 
+                                    <td class="green--text 
+                                    text--darken-1
+                                    font-weight-black">$0</td>
+                                </tr>
+                            </tbody>
+                            </template>
+                        </v-simple-table>
+                        </v-card-text>
+                    </v-card>
+                    <v-card
+                        class="mt-5"
+                        color="blue-grey lighten-4"
+                    >
+                        <v-card-text class="text--primary text-left">
+                            <div class="font-weight-black">Carnet: $14.000</div>
+                            <div>Pago del carnet estudiantil.
+                            </div>
+                            <div>Fecha vencimiento: 01/02/2021</div>
+                            <div class="mt-5 font-weight-black" style="font-size: 1.3em;">Pagos realizados</div>
+                            <v-simple-table primary>
+                            <template v-slot:default>
+                            <thead>
+                                <tr>
+                                <th class="text-left">
+                                    Fecha
+                                </th>
+                                <th class="text-left">
+                                    Recibo
+                                </th>
+                                <th class="text-left">
+                                    Descripción
+                                </th>
+                                <th class="text-left">
+                                    Forma de pago
+                                </th>
+                                <th class="text-left">
+                                    Valor
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>25/01/2021</td>
+                                <td>
+                                    <v-btn
+                                    text
+                                    dark
+                                    @click="showVoucher"
+                                    class="light-green--text text--darken-2"
+                                    >
+                                        R104
+                                    </v-btn>
+                                </td>
+                                <td>Paga del carnet</td>
+                                <td>Efectivo</td>
+                                <td>$140.000</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="green--text 
+                                    text--darken-1">Total pagos</td>
+                                    <td class="green--text 
+                                    text--darken-1">$14.000</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="green--text 
+                                    text--darken-1
+                                    font-weight-black">Saldo</td>
+                                    <td class="green--text 
+                                    text--darken-1
+                                    font-weight-black">$0</td>
+                                </tr>
+                            </tbody>
+                            </template>
+                        </v-simple-table>
+                        </v-card-text>
+                    </v-card>
+                    <v-card
+                        class="mt-5"
+                        color="blue-grey lighten-4"
+                    >
+                        <v-card-text class="text--primary text-left">
+                            <div class="font-weight-black">Seguro: $10.000</div>
+                            <div>Pago del seguro estudiantil.
+                            </div>
+                            <div>Fecha vencimiento: 01/02/2021</div>
+                            <div class="mt-5 font-weight-black" style="font-size: 1.3em;">Pagos realizados</div>
+                            <v-simple-table primary>
+                            <template v-slot:default>
+                            <thead>
+                                <tr>
+                                <th class="text-left">
+                                    Fecha
+                                </th>
+                                <th class="text-left">
+                                    Recibo
+                                </th>
+                                <th class="text-left">
+                                    Descripción
+                                </th>
+                                <th class="text-left">
+                                    Forma de pago
+                                </th>
+                                <th class="text-left">
+                                    Valor
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>25/01/2021</td>
+                                <td>
+                                    <v-btn
+                                    text
+                                    dark
+                                    @click="showVoucher"
+                                    class="light-green--text text--darken-2"
+                                    >
+                                        R104
+                                    </v-btn>
+                                </td>
+                                <td>Paga del seguro estudiantil</td>
+                                <td>Efectivo</td>
+                                <td>$10.000</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="green--text 
+                                    text--darken-1">Total pagos</td>
+                                    <td class="green--text 
+                                    text--darken-1">$10.000</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="green--text 
+                                    text--darken-1
+                                    font-weight-black">Saldo</td>
+                                    <td class="green--text 
                                     text--darken-1
                                     font-weight-black">$0</td>
                                 </tr>
@@ -248,48 +386,42 @@
                                 <td>$50.000</td>
                                 </tr>
                                 <tr>
-                                <td>25/03/2020</td>
+                                <td>09/03/2020</td>
                                 <td>R30</td>
                                 <td>Abono del primer corte de pago</td>
                                 <td>Efectivo</td>
-                                <td>$50.000</td>
+                                <td>$56.000</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
-                                    <td class="deep-orange--text 
+                                    <td class="green--text 
                                     text--darken-1">Total pagos</td>
-                                    <td class="deep-orange--text 
-                                    text--darken-1">$100.000</td>
+                                    <td class="green--text 
+                                    text--darken-1">$106.000</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
-                                    <td class="deep-orange--text 
+                                    <td class="green--text 
                                     text--darken-1
                                     font-weight-black">Saldo</td>
-                                    <td class="deep-orange--text 
+                                    <td class="green--text 
                                     text--darken-1
-                                    font-weight-black">$6.000</td>
+                                    font-weight-black">$0</td>
                                 </tr>
                             </tbody>
                             </template>
                         </v-simple-table>
                         </v-card-text>
                     </v-card>
-                </v-expansion-panel-content>
-            </v-expansion-panel>
-            <v-expansion-panel>
-                <v-expansion-panel-header class="font-weight-black light-green--text text--darken-4">Pagos opcionales</v-expansion-panel-header>
-                <v-expansion-panel-content>
                     <v-card
                         class="mt-5"
                         color="blue-grey lighten-4"
                     >
                         <v-card-text class="text--primary text-left">
-                            <div class="font-weight-black">Inicial matrícula: $320.000</div>
-                            <div>Pago inicial para poder matricular al estudiante.
-                                Corresponde a la mitad del valor total de la matrícula.
+                            <div class="font-weight-black">Saldo matrícula (segundo corte): $106.000</div>
+                            <div>Segundo pago del saldo por pagar de la mitad del valor de la matrícula.
                             </div>
-                            <div>Fecha vencimiento: 01/02/2021</div>
+                            <div>Fecha vencimiento: 10/04/2021</div>
                             <div class="mt-5 font-weight-black" style="font-size: 1.3em;">Pagos realizados</div>
                             <v-simple-table primary>
                             <template v-slot:default>
@@ -314,18 +446,18 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                <td>25/01/2021</td>
-                                <td>R104</td>
-                                <td>Paga el total del pago inicial</td>
+                                <td>28/03/2020</td>
+                                <td>R10</td>
+                                <td>Abono del segundo corte de pago</td>
                                 <td>Efectivo</td>
-                                <td>$320.000</td>
+                                <td>$14.000</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
                                     <td class="deep-orange--text 
                                     text--darken-1">Total pagos</td>
                                     <td class="deep-orange--text 
-                                    text--darken-1">$320.000</td>
+                                    text--darken-1">$14.000</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
@@ -334,7 +466,118 @@
                                     font-weight-black">Saldo</td>
                                     <td class="deep-orange--text 
                                     text--darken-1
-                                    font-weight-black">$0</td>
+                                    font-weight-black">$92.000</td>
+                                </tr>
+                            </tbody>
+                            </template>
+                        </v-simple-table>
+                        </v-card-text>
+                    </v-card>
+                    <v-card
+                        class="mt-5"
+                        color="blue-grey lighten-4"
+                    >
+                        <v-card-text class="text--primary text-left">
+                            <div class="font-weight-black">Saldo matrícula (tercer corte): $108.000</div>
+                            <div>Tercer pago del saldo por pagar de la mitad del valor de la matrícula.
+                            </div>
+                            <div>Fecha vencimiento: 10/05/2021</div>
+                            <div class="mt-5 font-weight-black" style="font-size: 1.3em;">Pagos realizados</div>
+                            <v-simple-table primary>
+                            <template v-slot:default>
+                            <thead>
+                                <tr>
+                                <th class="text-left">
+                                    Fecha
+                                </th>
+                                <th class="text-left">
+                                    Recibo
+                                </th>
+                                <th class="text-left">
+                                    Descripción
+                                </th>
+                                <th class="text-left">
+                                    Forma de pago
+                                </th>
+                                <th class="text-left">
+                                    Valor
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1">Total pagos</td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1">$0</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1
+                                    font-weight-black">Saldo</td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1
+                                    font-weight-black">$108.000</td>
+                                </tr>
+                            </tbody>
+                            </template>
+                        </v-simple-table>
+                        </v-card-text>
+                    </v-card>
+                </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel>
+                <v-expansion-panel-header class="font-weight-black light-green--text text--darken-4">Pagos opcionales</v-expansion-panel-header>
+                <v-expansion-panel-content>
+                    <v-card
+                        class="mt-5"
+                        color="blue-grey lighten-4"
+                    >
+                        <v-card-text class="text--primary text-left">
+                            <div class="font-weight-black">Arl primera práctica: $10.000</div>
+                            <div>Pago arl práctica hospital.
+                            </div>
+                            <div>Fecha vencimiento: 28/04/2021</div>
+                            <div class="mt-5 font-weight-black" style="font-size: 1.3em;">Pagos realizados</div>
+                            <v-simple-table primary>
+                            <template v-slot:default>
+                            <thead>
+                                <tr>
+                                <th class="text-left">
+                                    Fecha
+                                </th>
+                                <th class="text-left">
+                                    Recibo
+                                </th>
+                                <th class="text-left">
+                                    Descripción
+                                </th>
+                                <th class="text-left">
+                                    Forma de pago
+                                </th>
+                                <th class="text-left">
+                                    Valor
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1">Total pagos</td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1">$10.000</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1
+                                    font-weight-black">Saldo</td>
+                                    <td class="deep-orange--text 
+                                    text--darken-1
+                                    font-weight-black">$10.000</td>
                                 </tr>
                             </tbody>
                             </template>

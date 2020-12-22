@@ -22,10 +22,10 @@
 
             <v-chip
                 class="ma-2"
-                color="green"
+                color="brown ligthen-1"
                 text-color="white"
             >
-                Terminado
+                En curso
             </v-chip>
             </v-card-text>
 

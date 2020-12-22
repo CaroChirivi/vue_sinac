@@ -104,9 +104,7 @@
                         no-resize
                         rows="4"
                         label="Label"
-                        value="The Woodman set to work at once, and so sharp was his axe that the tree 
-                        was soon chopped nearly through. The Woodman set to work at once, and so sharp was his axe that the tree 
-                        was soon chopped nearly through. "
+                        value=""
                         ></v-textarea>
                     </v-col>
                 </v-row>
@@ -142,18 +140,19 @@
                         dense
                     >
                         <v-timeline-item
-                        color="light-blue lighten-2"
+                        color="light-green lighten-2"
                         small
                         >
                         <v-row class="pt-1" justify="start">
                             <v-col cols="3">
-                            <strong>25/01/2019</strong>
+                            <strong>01/04/2019</strong>
                             </v-col>
                             <v-col>
-                            <strong>Inscrito</strong>
+                            <strong>Aplazado</strong>
                             <div class="caption">
-                                El estudiante ha sido inscrito al I semestre en Auxiliar de Enfermería.
-                                Grupo 2019 A I semestre.
+                                El estudiante solicita el aplazamiento del semestre debido a enfermedad
+                                de un familiar y debe viajar una temporada fuera de Villavicencio.
+                                La estudiante solicita se le guarde el dinero para volver el próximo semestre.
                             </div>
                             </v-col>
                         </v-row>
@@ -178,19 +177,18 @@
                         </v-timeline-item>
 
                         <v-timeline-item
-                        color="light-green lighten-2"
+                        color="light-blue lighten-2"
                         small
                         >
                         <v-row class="pt-1" justify="start">
                             <v-col cols="3">
-                            <strong>01/04/2019</strong>
+                            <strong>25/01/2019</strong>
                             </v-col>
                             <v-col>
-                            <strong>Aplazado</strong>
+                            <strong>Inscrito</strong>
                             <div class="caption">
-                                El estudiante solicita el aplazamiento del semestre debido a enfermedad
-                                de un familiar y debe viajar una temporada fuera de Villavicencio.
-                                La estudiante solicita se le guarde el dinero para volver el próximo semestre.
+                                El estudiante ha sido inscrito al I semestre en Auxiliar de Enfermería.
+                                Grupo 2019 A I semestre.
                             </div>
                             </v-col>
                         </v-row>

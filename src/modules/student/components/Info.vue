@@ -5,7 +5,7 @@
                 <v-row align="center" justify="center">
                     <v-col cols="9" align="center" justify="center">
                         <v-img
-                            src="@/assets/images/perfil.jpg"
+                            src="@/assets/images/perfil.png"
                             width="150px"
                             height="200px"
                         ></v-img>
@@ -54,16 +54,16 @@
             </v-col>
             <v-col cols="8" align="left">
                 <v-row>
-                    <v-col cols="3" align="right">Código:</v-col>
+                    <v-col cols="3" align="right">Código estudiante:</v-col>
                     <v-col cols="9">00010</v-col>
                 </v-row>
                 <v-row>
                     <v-col cols="3" align="right">Nombre:</v-col>
-                    <v-col cols="9">Jose Antonio Mendoza Tarapues</v-col>
+                    <v-col cols="9">Sandra Milena Gomez Hernandez</v-col>
                 </v-row>
                 <v-row>
                     <v-col cols="3" align="right">Cédula:</v-col>
-                    <v-col cols="9">1023244656</v-col>
+                    <v-col cols="9">1122015236</v-col>
                 </v-row>
                 <v-row>
                     <v-col cols="3" align="right">Ciudad:</v-col>
@@ -79,7 +79,7 @@
                 </v-row>
                 <v-row>
                     <v-col cols="3" align="right">Correo:</v-col>
-                    <v-col cols="9">josemendoza@gmail.com</v-col>
+                    <v-col cols="9">sandragomez@gmail.com</v-col>
                 </v-row>
             </v-col>
         </v-row>

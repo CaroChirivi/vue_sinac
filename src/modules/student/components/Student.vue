@@ -8,7 +8,7 @@
         class="teal--text text--lighten-5 
         light-blue darken-3 
         justify-center
-        font-weight-black">Jose Antonio Mendoza Tarapues</v-card-title>
+        font-weight-black">Sandra Milena Gomez Hernandez</v-card-title>
         <v-tabs
           class="tabs"
           centered
