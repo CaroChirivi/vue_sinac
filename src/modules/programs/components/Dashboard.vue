@@ -33,64 +33,71 @@
         <v-card-text>
             <v-form ref="main" @submit.prevent="createNewBook()">
                 <v-row>
-                    <v-col cols="4">
-                        <v-autocomplete
-                            v-model="values"
-                            :items="items"
-                            dense
-                            label="Area"
-                        ></v-autocomplete>
+                    <v-col cols="8">
+                        <v-row>
+                            <v-col cols="4">
+                                <v-autocomplete
+                                    v-model="values"
+                                    :items="items"
+                                    dense
+                                    label="Area"
+                                ></v-autocomplete>
+                            </v-col>
+                            <v-col cols="4">
+                                <v-autocomplete
+                                    v-model="values"
+                                    :items="items"
+                                    dense
+                                    label="Tipo"
+                                ></v-autocomplete>
+                            </v-col>
+                            <v-col cols="4">
+                                <v-autocomplete
+                                    v-model="values"
+                                    :items="items"
+                                    dense
+                                    label="Modalidad"
+                                ></v-autocomplete>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="6">
+                                <v-text-field label="Nombre corto"></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12">
+                                <v-text-field label="Nombre largo"></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12">
+                                <v-textarea
+                                class="mt-2 mb-16"
+                                name="input-7-1"
+                                outlined
+                                clearable
+                                no-resize
+                                rows="4"
+                                label="Descripción"
+                                value=""
+                                ></v-textarea>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="6">
+                                <v-select
+                                :items="items"
+                                label="Tipo de duración"
+                                ></v-select>
+                            </v-col>
+                            <v-col cols="6">
+                                <v-text-field label="Tiempo de duración"></v-text-field>
+                            </v-col>
+                        </v-row>
                     </v-col>
-                    <v-col cols="4">
-                        <v-autocomplete
-                            v-model="values"
-                            :items="items"
-                            dense
-                            label="Tipo"
-                        ></v-autocomplete>
-                    </v-col>
-                    <v-col cols="4">
-                        <v-autocomplete
-                            v-model="values"
-                            :items="items"
-                            dense
-                            label="Modalidad"
-                        ></v-autocomplete>
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col cols="6">
-                        <v-text-field label="Nombre corto"></v-text-field>
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col cols="12">
-                        <v-text-field label="Nombre largo"></v-text-field>
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col cols="12">
-                        <v-textarea
-                        class="mt-2 mb-16"
-                        name="input-7-1"
-                        outlined
-                        clearable
-                        no-resize
-                        rows="4"
-                        label="Descripción"
-                        value=""
-                        ></v-textarea>
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col cols="6">
-                        <v-select
-                        :items="items"
-                        label="Tipo de duración"
-                        ></v-select>
-                    </v-col>
-                    <v-col cols="6">
-                        <v-text-field label="Tiempo de duración"></v-text-field>
+                    <v-col cols="4" align="center" justify="center">
+                        <ImagePreview /> 
                     </v-col>
                 </v-row>
             </v-form>
@@ -253,8 +260,14 @@
 </template>
 
 <script>
+
+import ImagePreview from '@/components/ImagePreview'
+
 export default {
     name: 'Dashboard',
+    components: {
+        ImagePreview
+    },
     data: () => ({
         addProgram: true,
     }),

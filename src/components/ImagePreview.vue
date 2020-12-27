@@ -41,11 +41,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+input [file]{
+    width: 100%;
+}
+
 .file-upload-form, .image-preview {
     padding: 2px;
 }
 img.preview {
-    width: 250px;
+    width: 90%;
     height: 250px;
     background-color: white;
     border: 1px solid #DDD;
