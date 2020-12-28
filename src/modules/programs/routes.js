@@ -41,6 +41,13 @@ export const ProgramRoutes = [
                             requiresAuth: true
                         }
                     },
+                    {
+                        path: '/programs/program/groups/payments',
+                        component: () => import('./components/groups/Payments'),
+                        meta: {
+                            requiresAuth: true
+                        }
+                    },
                 ]
             }
         ]

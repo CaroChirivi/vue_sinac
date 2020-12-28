@@ -25,7 +25,7 @@
         <v-expand-x-transition>
         <v-card
         v-if="!addPay"
-        width="450"
+        width="800"
         class="mx-auto my-10"
         >
         <v-card-title 
@@ -40,16 +40,51 @@
                 <v-row>
                     <v-col cols="12">
                         <v-autocomplete
-                            v-model="values"
-                            :items="items"
-                            dense
-                            label="Buscar estudiante"
-                        ></v-autocomplete>
+                            v-model="friends"
+                            :disabled="isUpdating"
+                            :items="people"
+                            filled
+                            chips
+                            color="blue-grey lighten-2"
+                            label="Seleccione los estudiantes"
+                            item-text="name"
+                            item-value="name"
+                            multiple
+                            >
+                            <template v-slot:selection="data">
+                                <v-chip
+                                v-bind="data.attrs"
+                                :input-value="data.selected"
+                                close
+                                @click="data.select"
+                                @click:close="remove(data.item)"
+                                >
+                                <v-avatar left>
+                                    <v-img :src="data.item.avatar"></v-img>
+                                </v-avatar>
+                                {{ data.item.name }}
+                                </v-chip>
+                            </template>
+                            <template v-slot:item="data">
+                                <template v-if="typeof data.item !== 'object'">
+                                <v-list-item-content v-text="data.item"></v-list-item-content>
+                                </template>
+                                <template v-else>
+                                <v-list-item-avatar>
+                                    <img :src="data.item.avatar">
+                                </v-list-item-avatar>
+                                <v-list-item-content>
+                                    <v-list-item-title v-html="data.item.name"></v-list-item-title>
+                                    <v-list-item-subtitle v-html="data.item.group"></v-list-item-subtitle>
+                                </v-list-item-content>
+                                </template>
+                            </template>
+                            </v-autocomplete>
                     </v-col>
                 </v-row>
             </v-form>
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions class="mt-5">
             <v-btn
                 color="blue darken-3"
                 class="mx-auto"
@@ -142,6 +177,18 @@ export default {
         expanded: 0,
         addPay: true,
         menu: false,
+        friends: [],
+        isUpdating: false,
+        people: [
+          { header: 'Group 1' },
+          { name: 'Sandra Adams', group: 'Group 1', avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg' },
+          { name: 'Ali Connors', group: 'Group 1', avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg' },
+          { name: 'Trevor Hansen', group: 'Group 1', avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg' },
+          { name: 'Tucker Smith', group: 'Group 1', avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg' },
+          { divider: true },
+          { header: 'Group 2' },
+          { name: 'Britta Holt', group: 'Group 2', avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg' },
+        ],
         headers: [
           {
             text: 'Tipo documento',
@@ -187,6 +234,10 @@ export default {
     methods: {
       save (date) {
         this.$refs.menu.save(date)
+      },
+      remove (item) {
+        const index = this.friends.indexOf(item.name)
+        if (index >= 0) this.friends.splice(index, 1)
       },
     }
 }

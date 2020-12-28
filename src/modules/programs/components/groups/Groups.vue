@@ -227,7 +227,7 @@
                         x-small
                         v-bind:class="{ green: item.pagos==0 }"
                         class="brown ligthen-1"
-                        to="/student/student/programs/payments"
+                        to="/programs/program/groups/payments"
                         >{{ item.pagos }}</v-btn>
                     </template>
                     <span>Ver pagos en este grupo</span>
