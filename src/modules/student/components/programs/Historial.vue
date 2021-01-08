@@ -46,7 +46,7 @@
                         dark
                         x-small
                         class="brown ligthen-1"
-                        to="historial/states"
+                        to="/student/student/programs/historial/states"
                         >{{ item.estado }}</v-btn>
                     </template>
                     <span>Ver historial estados en este grupo</span>
@@ -62,7 +62,7 @@
                         x-small
                         v-bind:class="{ green: item.pagos==0 }"
                         class="red darken-1"
-                        to="payments"
+                        to="/student/student/programs/payments"
                         >{{ item.pagos }}</v-btn>
                     </template>
                     <span>Ver pagos en este grupo</span>

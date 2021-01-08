@@ -22,10 +22,10 @@
 
             <v-chip
                 class="ma-2"
-                color="green"
+                color="brown ligthen-1"
                 text-color="white"
             >
-                Terminado
+                En curso
             </v-chip>
             </v-card-text>
 
@@ -34,7 +34,7 @@
             <v-btn
                 color="light-blue darken-3"
                 text
-                to="/programs/historial"
+                to="/student/student/programs/historial"
             >
                 Explorar
             </v-btn>

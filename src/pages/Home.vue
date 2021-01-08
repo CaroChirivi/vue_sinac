@@ -33,26 +33,6 @@
                             {{ item.title }}
                         </v-card-title>
                     </v-card>
-                    <!-- <v-card
-                    :elevation="hover ? 12 : 2"
-                    :class="{ 'on-hover': hover }"
-                    >
-                    <v-img
-                        :src="getIconUrl(item.img)"
-                        height="225px"
-                    >
-                        <v-card-title class="title white--text">
-                        <v-row
-                            class="fill-height flex-column"
-                            justify="space-between"
-                        >
-                            <p class="mt-4 subheading text-left">
-                            {{ item.title }}
-                            </p>
-                        </v-row>
-                        </v-card-title>
-                    </v-img>
-                    </v-card> -->
                 </v-hover>
                 </v-col>
             </template>
@@ -69,11 +49,12 @@ export default {
         {
           title: 'Estudiantes',
           img: 'person_search_peque.png',
-          url: '/student/student'
+          url: '/student'
         },
         {
           title: 'Programas',
           img: 'professions.png',
+          url: '/programs'
         },
         {
           title: 'Pagos',
@@ -95,7 +76,7 @@ export default {
             return require(`../assets/images/${img}`)
         },
         getUrl(url){
-            return '/student/student'
+            return url
         }
     }
 }

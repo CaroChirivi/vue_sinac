@@ -14,6 +14,7 @@
         >
           <v-row>
             <v-col cols="2">
+              <router-link to="/">
               <template>
                 <v-img
                   class="mx-2"
@@ -23,7 +24,7 @@
                   contain
                 ></v-img>
               </template>
-
+              </router-link>
               <v-row class="ml-13">
                 <v-col>
                   <v-menu

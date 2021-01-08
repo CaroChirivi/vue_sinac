@@ -5,7 +5,7 @@
                 <v-row align="center" justify="center">
                     <v-col cols="9" align="center" justify="center">
                         <v-img
-                            src="@/assets/images/perfil.png"
+                            src="@/assets/images/enfermeria.png"
                             width="150px"
                             height="200px"
                         ></v-img>
@@ -54,32 +54,24 @@
             </v-col>
             <v-col cols="8" align="left">
                 <v-row>
-                    <v-col cols="3" align="right">Código estudiante:</v-col>
-                    <v-col cols="9">00010</v-col>
+                    <v-col cols="3" align="right">Nombre Corto:</v-col>
+                    <v-col cols="9">Aux. Enfermería.</v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="3" align="right">Nombre:</v-col>
-                    <v-col cols="9">Sandra Milena Gomez Hernandez</v-col>
+                    <v-col cols="3" align="right">Área:</v-col>
+                    <v-col cols="9">Salud</v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="3" align="right">Cédula:</v-col>
-                    <v-col cols="9">1122015236</v-col>
+                    <v-col cols="3" align="right">Tipo:</v-col>
+                    <v-col cols="9">Técnico</v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="3" align="right">Ciudad:</v-col>
-                    <v-col cols="9">Villavicencio</v-col>
+                    <v-col cols="3" align="right">Modalidad:</v-col>
+                    <v-col cols="9">Semipresencial</v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="3" align="right">Edad:</v-col>
-                    <v-col cols="9">21 años</v-col>
-                </v-row>
-                <v-row>
-                    <v-col cols="3" align="right">Celular:</v-col>
-                    <v-col cols="9">321 2047527</v-col>
-                </v-row>
-                <v-row>
-                    <v-col cols="3" align="right">Correo:</v-col>
-                    <v-col cols="9">sandragomez@gmail.com</v-col>
+                    <v-col cols="3" align="right">Duración:</v-col>
+                    <v-col cols="9">3 Semestres</v-col>
                 </v-row>
             </v-col>
         </v-row>

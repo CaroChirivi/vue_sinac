@@ -35,35 +35,35 @@ export const StudentRoutes = [
                         }
                     },
                     {
-                        path: '/histories',
+                        path: '/student/student/histories',
                         component: () => import('./components/Histories'),
                         meta: {
                             requiresAuth: true
                         }
                     },
                     {
-                        path: '/programs',
+                        path: '/student/student/programs',
                         component: () => import('./components/programs/Programs'),
                         meta: {
                             requiresAuth: true
                         },
                     },
                     {
-                        path: '/programs/historial',
+                        path: '/student/student/programs/historial',
                         component: () => import('./components/programs/Historial'),
                         meta: {
                             requiresAuth: true
                         },
                     },
                     {
-                        path: '/programs/historial/states',
+                        path: '/student/student/programs/historial/states',
                         component: () => import('./components/programs/HistorialStates'),
                         meta: {
                             requiresAuth: true
                         },
                     },
                     {
-                        path: '/programs/payments',
+                        path: '/student/student/programs/payments',
                         component: () => import('./components/programs/Payments'),
                         meta: {
                             requiresAuth: true
