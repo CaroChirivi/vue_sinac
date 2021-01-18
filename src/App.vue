@@ -94,7 +94,7 @@
                           mdi-account-circle
                         </v-icon>
                       </v-avatar>
-                      Diana Carolina Tarapues Chirivi
+                      {{ userAuth.name  }}
                     </v-chip>
                   </template>
                   <v-card width="300">
@@ -110,8 +110,8 @@
                           </v-avatar>
                         </v-list-item-avatar>
                         <v-list-item-content>
-                          <v-list-item-title class="white--text">Carolina Tarapues</v-list-item-title>
-                          <v-list-item-subtitle class="white--text">carotarapues@gmail.com</v-list-item-subtitle>
+                          <v-list-item-title class="white--text">{{ userAuth.name }}</v-list-item-title>
+                          <v-list-item-subtitle class="white--text">{{ userAuth.mail }}</v-list-item-subtitle>
                         </v-list-item-content>
                         <v-list-item-action>
                           <v-btn
@@ -167,10 +167,15 @@
 
   import Header from '@/components/Header'
   import Footer from '@/components/Footer'
+  import eventBus from '@/eventBus'
 
   export default {
     name: 'App',
     data: () => ({
+      userAuth: {
+        name: '',
+        mail: ''
+      },
       spin: {
         val: false
       },
@@ -179,6 +184,12 @@
         array: []
       }
     }),
+    created () {
+        eventBus.$on('changeUserName', (event) => {
+            this.userAuth.name = event.name
+            this.userAuth.mail = event.email
+        })
+    },
     provide() {
       return {
         mySpinner: this.spin,
@@ -188,6 +199,12 @@
     components: {
       Header,
       Footer
-    }
+    },
+    methods: {
+      changeUserName (newUserName) {
+        console.log("Change name function");
+        this.userName = newUserName
+      }
+    },
   };
 </script>

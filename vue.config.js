@@ -3,6 +3,12 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
+  "pages": {
+    "index": {
+      "entry": 'src/main.js',
+      "title": 'SINAC'
+    }
+  },
   chainWebpack: config => {
     const svgRule = config.module.rule('svg')
     svgRule.uses.clear()
