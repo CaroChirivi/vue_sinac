@@ -68,7 +68,7 @@
         },
         inject: [
             'mySpinner',
-            'errorMessages'
+            'errorMessages',
         ],
         methods: {
             async signIn () {

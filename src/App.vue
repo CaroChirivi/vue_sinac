@@ -130,7 +130,7 @@
                         </v-list-item-action>
                         <v-list-item-subtitle>Cambiar contraseña</v-list-item-subtitle>
                       </v-list-item>
-                      <v-list-item @click="() => {}">
+                      <v-list-item v-on:click="logout">
                         <v-list-item-action>
                           <v-icon color="blue darken-4">mdi-logout</v-icon>
                         </v-list-item-action>
@@ -154,6 +154,10 @@
             :errors="errorMessages.array"     
             ref="errors"                 
           ></Errors>
+          <Success
+            :success-message="successMessage"     
+            ref="success"                 
+          ></Success>
           <router-view />
         </v-container>
         </v-sheet>
@@ -169,6 +173,8 @@
   import Footer from '@/components/Footer'
   import eventBus from '@/eventBus'
 
+  import LogoutServices from '@/modules/logout/services';
+
   export default {
     name: 'App',
     data: () => ({
@@ -182,7 +188,8 @@
       errorMessages: {
         message: '',
         array: []
-      }
+      },
+      successMessage: ''
     }),
     created () {
         eventBus.$on('changeUserName', (event) => {
@@ -193,7 +200,8 @@
     provide() {
       return {
         mySpinner: this.spin,
-        errorMessages: this.errorMessages
+        errorMessages: this.errorMessages,
+        successMessage: this.successMessage,
       }
     },
     components: {
@@ -204,7 +212,28 @@
       changeUserName (newUserName) {
         console.log("Change name function");
         this.userName = newUserName
-      }
-    },
+      },
+      async logout () {
+        try {
+            this.spin.val = true
+            // this.errorMessages.message = ''
+            // this.errorMessages.array = []
+
+            await LogoutServices.logout()
+            .then(response => {
+                console.log(response);
+                this.$store.dispatch('login/signIn', null)
+                this.$router.push('/signin')
+                this.spin.val = false
+                this.successMessage = response.data.message
+            })
+        }catch (error){
+           // this.errorMessages.message = `Consulte a la administradora: ${error}`
+            console.log("Error de afuera " + error);
+        }
+
+        //this.mySpinner.val = false
+      },
+    }
   };
 </script>
