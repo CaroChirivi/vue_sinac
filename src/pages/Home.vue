@@ -6,7 +6,7 @@
             align="center"
             justify="center"
             >
-            <template v-for="(item, i) in items">
+            <template v-for="(button, i) in quickAccessButtons">
                 <v-col
                 :key="i"
                 cols="12"
@@ -18,10 +18,10 @@
                         max-width="160"
                         :elevation="hover ? 12 : 2"
                         :class="{ 'on-hover': hover }"
-                        :to="getUrl(item.url)"
+                        :to="getUrl(button.url)"
                     >
                         <v-img
-                            :src="getIconUrl(item.img)"
+                            :src="getIconUrl(button.direct_access_image)"
                             height="120px"
                             width="120px"
                             class="mx-5"
@@ -30,7 +30,7 @@
                         <v-card-title 
                             class="text-h6 justify-center"
                         >
-                            {{ item.title }}
+                            {{ button.description }}
                         </v-card-title>
                     </v-card>
                 </v-hover>
@@ -42,42 +42,34 @@
 </template>
 
 <script>
+
+import { mapActions, mapState } from 'vuex'
+
 export default {
     name: 'Home',
     data: () => ({
-        items: [
-        {
-          title: 'Estudiantes',
-          img: 'person_search_peque.png',
-          url: '/student'
-        },
-        {
-          title: 'Programas',
-          img: 'professions.png',
-          url: '/programs'
-        },
-        {
-          title: 'Pagos',
-          img: 'pagos.png',
-        },
-        {
-          title: 'Reportes',
-          img: 'report.png',
-        },
-        {
-          title: 'Plataformas',
-          img: 'plataformas.png',
-        },
-      ],
+        //quickButtons: [],
       transparent: 'rgba(255, 255, 255, 0)',
     }),
     methods: {
+        ...mapActions('home', ['getQuickAccessButtons']),
         getIconUrl(img){
             return require(`../assets/images/${img}`)
         },
         getUrl(url){
             return url
         }
+    },
+    computed: {
+        ...mapState('home', ['quickAccessButtons'])
+    },
+    beforeCreate () {
+             console.log("Inicia spinner");
+         },
+    created () {
+        console.log("created");
+        this.quickButtons = this.getQuickAccessButtons()
+        console.log(this.quickButtons);
     }
 }
 </script>
