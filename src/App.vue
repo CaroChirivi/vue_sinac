@@ -25,36 +25,56 @@
                 ></v-img>
               </template>
               </router-link>
-              <v-row class="ml-13">
+              <v-row class="ml-8">
                 <v-col>
-                  <v-menu
-                    open-on-hover
-                    bottom
-                    origin="center center"
-                    transition="scale-transition"
-                    offset-y
-                    class="m-l-15"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-app-bar-nav-icon
-                        v-bind="attrs"
-                        v-on="on"
+                  <v-menu :close-on-content-click="false" open-on-hover bottom offset-y>
+                    <template v-slot:activator="{ on }">
+                      <v-btn
                         class="blue darken-4 rounded"
                         color="white"
                         small
+                        dark
+                        v-on="on"
                       >
                         <v-icon
                         >mdi-menu</v-icon>
-                      </v-app-bar-nav-icon>
+                      </v-btn>
                     </template>
+              
                     <v-list>
-                      <v-list-item>
-                        <v-list-item-title>Usuarios</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>Estudiantes</v-list-item-title>
-                      </v-list-item>
-                    </v-list>
+                        <v-list-group
+                          v-for="father in menu.fathers"
+                          :key="father.id"
+                          :prepend-icon="father.icon"
+                          no-action
+                        >
+                          <template v-slot:activator>
+                            <v-list-item>
+                              <v-list-item-content>
+                                <v-list-item-title v-if="father.url" link @click="$router.push({path: father.url})">{{ father.description }}
+                                </v-list-item-title>
+                                <v-list-item-title v-else >{{ father.description }}
+                                </v-list-item-title>
+                              </v-list-item-content>
+                            </v-list-item>
+                          </template>
+              
+                          <v-list-item
+                            v-for="child in menu.children"
+                            :key="child.id"
+                            @click=""
+                            v-if="child.menu_id === father.id"
+                          >
+                            <v-list-item-content>
+                              <v-list-item-title link @click="$router.push({path: child.url})">{{ child.description }}</v-list-item-title>
+                            </v-list-item-content>
+              
+                            <v-list-item-action>
+                              <v-icon>{{ child.icon }}</v-icon>
+                            </v-list-item-action>
+                          </v-list-item>
+                        </v-list-group>
+                      </v-list>
                   </v-menu>
                 </v-col>
               </v-row>
@@ -116,7 +136,7 @@
                         <v-list-item-action>
                           <v-btn
                             icon
-                            @click="menu = false"
+                            @click="menu = false" 
                           >
                             <v-icon color="white">mdi-close-circle</v-icon>
                           </v-btn>
@@ -169,7 +189,7 @@
 
 <script>
 
-  import Header from '@/components/Header'
+ // import Header from '@/components/Header'
   import Footer from '@/components/Footer'
   import eventBus from '@/eventBus'
 
@@ -182,6 +202,10 @@
         name: '',
         mail: ''
       },
+      menu: {
+        fathers: [],
+        children: []
+      },
       spin: {
         val: false
       },
@@ -192,9 +216,15 @@
       successMessage: ''
     }),
     created () {
+      console.log("entra created app");
         eventBus.$on('changeUserName', (event) => {
             this.userAuth.name = event.name
             this.userAuth.mail = event.email
+        })
+        eventBus.$on('loadMenu', (event) => {
+          console.log(event);
+            this.menu.fathers = event.fathers
+            this.menu.children = event.children
         })
     },
     provide() {
@@ -205,14 +235,18 @@
       }
     },
     components: {
-      Header,
+      //Header,
       Footer
     },
     methods: {
-      changeUserName (newUserName) {
-        console.log("Change name function");
-        this.userName = newUserName
-      },
+      // changeUserName (newUserName) {
+      //   console.log("Change name function");
+      //   this.userName = newUserName
+      // },
+      goMenu(url){
+          console.log("Go menu " + url);
+            this.$router.push(url)
+        },
       async logout () {
         try {
             this.spin.val = true

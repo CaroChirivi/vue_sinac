@@ -47,8 +47,11 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
     name: 'Home',
+    inject: [
+        'mySpinner',
+        'errorMessages',
+    ],
     data: () => ({
-        //quickButtons: [],
       transparent: 'rgba(255, 255, 255, 0)',
     }),
     methods: {
@@ -64,12 +67,13 @@ export default {
         ...mapState('home', ['quickAccessButtons'])
     },
     beforeCreate () {
-             console.log("Inicia spinner");
-         },
+        // this.mySpinner.val = true
+        // this.errorMessages.message = ''
+        // this.errorMessages.array = []
+    },
     created () {
-        console.log("created");
         this.quickButtons = this.getQuickAccessButtons()
-        console.log(this.quickButtons);
+        // this.mySpinner.val = false
     }
 }
 </script>

@@ -116,9 +116,11 @@
                     await LoginServices.signIn(userLogin)
                     .then(response => {
                         const { data: { token } } = response
-                        const { data: { user } } = response
                         if( token ){
+                            const { data: { user } } = response
+                            const { data: { menu } } = response
                             eventBus.$emit('changeUserName', user)
+                            eventBus.$emit('loadMenu', menu)
                             this.$store.dispatch('login/signIn', token)
                             this.$router.push('/')
                         }
