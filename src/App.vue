@@ -25,36 +25,56 @@
                 ></v-img>
               </template>
               </router-link>
-              <v-row class="ml-13">
+              <v-row class="ml-8">
                 <v-col>
-                  <v-menu
-                    open-on-hover
-                    bottom
-                    origin="center center"
-                    transition="scale-transition"
-                    offset-y
-                    class="m-l-15"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-app-bar-nav-icon
-                        v-bind="attrs"
-                        v-on="on"
+                  <v-menu :close-on-content-click="false" open-on-hover bottom offset-y>
+                    <template v-slot:activator="{ on }">
+                      <v-btn
                         class="blue darken-4 rounded"
                         color="white"
                         small
+                        dark
+                        v-on="on"
                       >
                         <v-icon
                         >mdi-menu</v-icon>
-                      </v-app-bar-nav-icon>
+                      </v-btn>
                     </template>
+              
                     <v-list>
-                      <v-list-item>
-                        <v-list-item-title>Usuarios</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>Estudiantes</v-list-item-title>
-                      </v-list-item>
-                    </v-list>
+                        <v-list-group
+                          v-for="father in menu.fathers"
+                          :key="father.id"
+                          :prepend-icon="father.icon"
+                          no-action
+                        >
+                          <template v-slot:activator>
+                            <v-list-item>
+                              <v-list-item-content>
+                                <v-list-item-title v-if="father.url" link @click="$router.push({path: father.url})">{{ father.description }}
+                                </v-list-item-title>
+                                <v-list-item-title v-else >{{ father.description }}
+                                </v-list-item-title>
+                              </v-list-item-content>
+                            </v-list-item>
+                          </template>
+              
+                          <v-list-item
+                            v-for="child in menu.children"
+                            :key="child.id"
+                            @click=""
+                            v-if="child.menu_id === father.id"
+                          >
+                            <v-list-item-content>
+                              <v-list-item-title link @click="$router.push({path: child.url})">{{ child.description }}</v-list-item-title>
+                            </v-list-item-content>
+              
+                            <v-list-item-action>
+                              <v-icon>{{ child.icon }}</v-icon>
+                            </v-list-item-action>
+                          </v-list-item>
+                        </v-list-group>
+                      </v-list>
                   </v-menu>
                 </v-col>
               </v-row>
@@ -94,7 +114,7 @@
                           mdi-account-circle
                         </v-icon>
                       </v-avatar>
-                      Diana Carolina Tarapues Chirivi
+                      {{ userAuth.name  }}
                     </v-chip>
                   </template>
                   <v-card width="300">
@@ -110,13 +130,13 @@
                           </v-avatar>
                         </v-list-item-avatar>
                         <v-list-item-content>
-                          <v-list-item-title class="white--text">Carolina Tarapues</v-list-item-title>
-                          <v-list-item-subtitle class="white--text">carotarapues@gmail.com</v-list-item-subtitle>
+                          <v-list-item-title class="white--text">{{ userAuth.name }}</v-list-item-title>
+                          <v-list-item-subtitle class="white--text">{{ userAuth.mail }}</v-list-item-subtitle>
                         </v-list-item-content>
                         <v-list-item-action>
                           <v-btn
                             icon
-                            @click="menu = false"
+                            @click="menu = false" 
                           >
                             <v-icon color="white">mdi-close-circle</v-icon>
                           </v-btn>
@@ -130,7 +150,7 @@
                         </v-list-item-action>
                         <v-list-item-subtitle>Cambiar contraseña</v-list-item-subtitle>
                       </v-list-item>
-                      <v-list-item @click="() => {}">
+                      <v-list-item v-on:click="logout">
                         <v-list-item-action>
                           <v-icon color="blue darken-4">mdi-logout</v-icon>
                         </v-list-item-action>
@@ -154,6 +174,10 @@
             :errors="errorMessages.array"     
             ref="errors"                 
           ></Errors>
+          <Success
+            :success-message="successMessage"     
+            ref="success"                 
+          ></Success>
           <router-view />
         </v-container>
         </v-sheet>
@@ -165,29 +189,85 @@
 
 <script>
 
-  import Header from '@/components/Header'
+ // import Header from '@/components/Header'
   import Footer from '@/components/Footer'
+  import eventBus from '@/eventBus'
+
+  import LogoutServices from '@/modules/logout/services';
 
   export default {
     name: 'App',
     data: () => ({
+      userAuth: {
+        name: '',
+        mail: ''
+      },
+      menu: {
+        fathers: [],
+        children: []
+      },
       spin: {
         val: false
       },
       errorMessages: {
         message: '',
         array: []
-      }
+      },
+      successMessage: ''
     }),
+    created () {
+      console.log("entra created app");
+        eventBus.$on('changeUserName', (event) => {
+            this.userAuth.name = event.name
+            this.userAuth.mail = event.email
+        })
+        eventBus.$on('loadMenu', (event) => {
+          console.log(event);
+            this.menu.fathers = event.fathers
+            this.menu.children = event.children
+        })
+    },
     provide() {
       return {
         mySpinner: this.spin,
-        errorMessages: this.errorMessages
+        errorMessages: this.errorMessages,
+        successMessage: this.successMessage,
       }
     },
     components: {
-      Header,
+      //Header,
       Footer
+    },
+    methods: {
+      // changeUserName (newUserName) {
+      //   console.log("Change name function");
+      //   this.userName = newUserName
+      // },
+      goMenu(url){
+          console.log("Go menu " + url);
+            this.$router.push(url)
+        },
+      async logout () {
+        try {
+            this.spin.val = true
+            // this.errorMessages.message = ''
+            // this.errorMessages.array = []
+
+            await LogoutServices.logout()
+            .then(response => {
+                console.log(response);
+                this.$store.dispatch('login/signIn', null)
+                this.$router.push('/signin')
+                this.spin.val = false
+                this.successMessage = response.data.message
+            })
+        }catch (error){
+           // this.errorMessages.message = `Consulte a la administradora: ${error}`
+            console.log("Error de afuera " + error);
+        }
+
+        //this.mySpinner.val = false
+      },
     }
   };
 </script>
